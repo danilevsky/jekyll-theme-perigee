@@ -76,6 +76,66 @@
     padding: 0;
     list-style: none;
   }
+
+  // view="media": a full-bleed image (or gradient) with the title/badge overlaid at the bottom,
+  // in the style of gravity-ui.com's library cards.
+  &_view_media {
+    position: relative;
+    display: block;
+    min-height: 220px;
+    height: 100%;
+  }
+
+  &__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: var(--g-color-base-generic);
+  }
+
+  &__media_placeholder {
+    background:
+      radial-gradient(120% 140% at 15% 15%, color-mix(in srgb, var(--g-color-base-brand) 55%, transparent), transparent 60%),
+      linear-gradient(160deg, var(--g-color-base-generic-medium), var(--g-color-base-generic));
+  }
+
+  &__overlay {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--g-spacing-3);
+    padding: var(--g-spacing-8) var(--g-spacing-4) var(--g-spacing-3);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+  }
+
+  &__overlay-title {
+    font: var(--g-text-subheader-3-font);
+    color: var(--g-color-private-white-1000-solid);
+  }
+
+  &__overlay-badge {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: var(--g-spacing-1);
+    padding: var(--g-spacing-1) var(--g-spacing-2);
+    border-radius: var(--g-border-radius-l);
+    background: color-mix(in srgb, black 35%, transparent);
+    color: var(--g-color-private-white-1000-solid);
+    font: var(--g-text-caption-2-font);
+    white-space: nowrap;
+  }
+}
+
+// Matches .pg-prose a:not(.pg-button)'s specificity — a card embedded directly in Markdown content
+// (e.g. the styleguide) would otherwise be underlined like a plain text link.
+.pg-prose a.pg-card {
+  text-decoration: none;
 }
 
 .pg-grid {
@@ -92,6 +152,24 @@
   --pg-grid-cols: 4;
 }
 
+// A "bento" gallery grid: pairs with pg-card_size_lg for a large featured tile, like
+// gravity-ui.com's "Our libraries". Falls back to a single column below 640px.
+.pg-grid_bento {
+  grid-auto-flow: dense;
+  grid-auto-rows: 140px;
+
+  // The 140px track is explicit, so the card should fill it exactly instead of enforcing
+  // its own (taller) minimum height, which would make it overflow into the next row.
+  .pg-card_view_media {
+    min-height: 0;
+  }
+}
+
+.pg-card_size_lg {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
 @media (max-width: 960px) {
   .pg-grid {
     --pg-grid-cols: 2;
@@ -101,5 +179,10 @@
 @media (max-width: 640px) {
   .pg-grid {
     --pg-grid-cols: 1 !important;
+  }
+
+  .pg-card_size_lg {
+    grid-column: span 1;
+    grid-row: span 1;
   }
 }

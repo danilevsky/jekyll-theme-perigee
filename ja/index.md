@@ -16,6 +16,7 @@ sections:
   - type: cards
     title: プロジェクト
     collection: projects
+    card_view: media
     limit: 3
     cols: 3
     all_title: すべてのプロジェクト

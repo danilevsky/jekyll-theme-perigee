@@ -4,6 +4,11 @@ lead: "\"projects\" 컬렉션의 샘플 항목입니다."
 excerpt: "\"projects\" 컬렉션의 샘플 항목으로, project 레이아웃을 보여줍니다."
 tags: [데모]
 translation_key: example-project
+featured: true
+image: /demo-assets/images/sample-cover-1.svg
+image_alt: 추상적인 그라데이션 일러스트
+badge: "2026"
+badge_icon: calendar
 ---
 
 이 페이지는 `projects_ko` 컬렉션(`_projects_ko/example-project.md`)에서 온 것이며 `project` 레이아웃을

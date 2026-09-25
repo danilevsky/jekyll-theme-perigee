@@ -1,12 +1,32 @@
 {%- comment -%}
-Usage: {% include card.html title=x text=x url=x image=x icon=x meta=x tags=x view="outlined" %}
-`view`: outlined | raised (default: filled). `meta`: plain string shown under the text.
+Usage: {% include card.html title=x text=x url=x image=x image_alt=x icon=x meta=x tags=x view="outlined" %}
+`view`: outlined | raised | media (default: filled). `meta`: plain string shown under the text.
+
+`view="media"` is a full-bleed image card with the title (and an optional `badge`) overlaid at the
+bottom — see /styleguide/ and the "projects" layout. It ignores `text`/`tags`/`icon`/`meta`.
+Pass `tile_size="lg"` to make it span 2 columns and 2 rows in a `pg-grid_bento` grid (named `tile_size`,
+not `size` — see the Liquid gotcha in CLAUDE.md).
+Without an `image`, it falls back to a plain brand-colored gradient.
 {%- endcomment -%}
 {%- comment -%}pg_card_el (not pg_tag) — {% include %} shares scope, and callers commonly loop over content tags as pg_tag.{%- endcomment -%}
 {%- assign pg_card_el = "div" -%}{%- if include.url -%}{%- assign pg_card_el = "a" -%}{%- endif -%}
-<{{ pg_card_el }} class="pg-card{% if include.view %} pg-card_view_{{ include.view }}{% endif %}"{% if include.url %} href="{{ include.url | relative_url }}"{% endif %}>
+{%- assign pg_card_class = "pg-card" -%}
+{%- if include.view -%}{%- assign pg_card_class = pg_card_class | append: " pg-card_view_" | append: include.view -%}{%- endif -%}
+{%- if include.tile_size -%}{%- assign pg_card_class = pg_card_class | append: " pg-card_size_" | append: include.tile_size -%}{%- endif -%}
+<{{ pg_card_el }} class="{{ pg_card_class }}"{% if include.url %} href="{{ include.url | relative_url }}"{% endif %}>
+  {%- if include.view == "media" -%}
   {%- if include.image %}
-  <img class="pg-card__image" src="{{ include.image | relative_url }}" alt="" loading="lazy">
+  <img class="pg-card__media" src="{{ include.image | relative_url }}" alt="{{ include.image_alt | default: '' | escape }}" loading="lazy">
+  {%- else %}
+  <span class="pg-card__media pg-card__media_placeholder" aria-hidden="true"></span>
+  {%- endif %}
+  <span class="pg-card__overlay">
+    {%- if include.title %}<span class="pg-card__overlay-title">{{ include.title }}</span>{% endif -%}
+    {%- if include.badge %}<span class="pg-card__overlay-badge">{% if include.badge_icon %}{% include icon.html name=include.badge_icon px=14 %}{% endif %}{{ include.badge }}</span>{% endif -%}
+  </span>
+  {%- else -%}
+  {%- if include.image %}
+  <img class="pg-card__image" src="{{ include.image | relative_url }}" alt="{{ include.image_alt | default: '' | escape }}" loading="lazy">
   {%- endif %}
   <div class="pg-card__body">
     {%- if include.icon %}<span class="pg-card__icon">{% include icon.html name=include.icon px=24 %}</span>{% endif -%}
@@ -19,4 +39,5 @@ Usage: {% include card.html title=x text=x url=x image=x icon=x meta=x tags=x vi
     {%- endif -%}
     {%- if include.meta %}<p class="pg-card__meta">{{ include.meta }}</p>{% endif -%}
   </div>
+  {%- endif -%}
 </{{ pg_card_el }}>

@@ -16,6 +16,7 @@ sections:
   - type: cards
     title: 프로젝트
     collection: projects
+    card_view: media
     limit: 3
     cols: 3
     all_title: 모든 프로젝트

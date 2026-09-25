@@ -4,6 +4,11 @@ lead: Ein Beispieleintrag in der "projects"-Sammlung.
 excerpt: Ein Beispieleintrag in der "projects"-Sammlung, der das project-Layout zeigt.
 tags: [demo]
 translation_key: example-project
+featured: true
+image: /demo-assets/images/sample-cover-1.svg
+image_alt: Abstrakte Verlaufsillustration
+badge: "2026"
+badge_icon: calendar
 ---
 
 Diese Seite stammt aus der Sammlung `projects_de` (`_projects_de/example-project.md`) und nutzt das

@@ -32,7 +32,7 @@ Params: title, text, items|collection, limit, cols (2|3|4), card_view, all_title
   {%- endif %}
   <div class="pg-grid{% if include.section.cols %} pg-grid_cols_{{ include.section.cols }}{% endif %}">
     {%- for pg_item in pg_s_items limit: pg_s_limit %}
-    {% include card.html title=pg_item.title text=pg_item.text url=pg_item.url image=pg_item.image icon=pg_item.icon tags=pg_item.tags view=include.section.card_view %}
+    {% include card.html title=pg_item.title text=pg_item.text url=pg_item.url image=pg_item.image image_alt=pg_item.image_alt icon=pg_item.icon tags=pg_item.tags badge=pg_item.badge badge_icon=pg_item.badge_icon view=include.section.card_view %}
     {%- endfor %}
   </div>
 </section>

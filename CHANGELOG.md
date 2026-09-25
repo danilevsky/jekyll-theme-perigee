@@ -17,3 +17,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - `project` / `projects` layouts for portfolio-style collections, with the `<name>_<lang>` convention for
   multilingual collections.
 - `/styleguide/` demo page documenting every component.
+- `card.html`'s `view="media"` and a `pg-grid_bento` gallery grid for the `/projects/` page, in the style of
+  gravity-ui.com's "Our libraries" (one large featured tile plus smaller ones, via `featured`/`badge` front matter).
+- Image support: `image`/`image_alt` front matter for post/project cover images and card thumbnails, and a
+  `figure.html` include for captioned inline images.
+- Optional `warm` palette (warm off-white, near-black text, amber accent, and a fixed ambient glow on
+  every page that stays in place while scrolling), enabled with `perigee.palette: warm` in `_config.yml`; the demo site uses it. Gravity UI's colors stay the default.
+
+### Fixed
+- Light-theme links in the warm palette use a darker amber (5.1:1 contrast instead of ~1.6:1).
+- The palette's glow no longer causes horizontal scrolling on viewports narrower than ~1280px.
+- Project badges now show on home-page `cards` sections, not only on `/projects/`.
+- Image `alt` text is HTML-escaped, so quotes in `image_alt` no longer break the markup.

@@ -27,7 +27,28 @@ lead: Every component the theme ships, in both color themes.
 ## Cards
 
 {% assign pg_example_tags = "Tag 1,Tag 2" | split: "," %}
-{% include card.html title="Card title" text="Supporting text for the card." tags=pg_example_tags url="/blog/" %}
+<div class="pg-grid pg-grid_cols_2">
+  {% include card.html title="Card title" text="Supporting text for the card." tags=pg_example_tags url="/blog/" %}
+</div>
+
+## Media cards & the projects gallery
+
+`view="media"` is a full-bleed image (or gradient, if no `image` is given) card with the title and an
+optional `badge` overlaid at the bottom — used by the `/projects/` gallery. Pair it with `pg-grid_bento` and
+`tile_size="lg"` on one card for a large featured tile, gravity-ui.com's "Our libraries" style; see
+[Images](https://github.com/danilevsky/jekyll-theme-perigee#images) in the README and the
+[Projects page]({{ '/projects/' | relative_url }}) for a live example with several tiles.
+
+<div class="pg-grid pg-grid_cols_2">
+  {% include card.html view="media" title="With an image" image="/demo-assets/images/sample-cover-3.svg" image_alt="Abstract gradient illustration" badge="Demo" badge_icon="tag" url="/projects/" %}
+  {% include card.html view="media" title="Without an image" badge="Fallback" url="/projects/" %}
+</div>
+
+## Figure with a caption
+
+Inside a post or project body: `{% raw %}{% include figure.html src="..." alt="..." caption="..." %}{% endraw %}`.
+
+{% include figure.html src="/demo-assets/images/sample-cover-2.svg" alt="Abstract gradient illustration" caption="An example caption below the image." %}
 
 ## Alerts
 

@@ -1,0 +1,10 @@
+{%- comment -%}
+Usage inside a post/project body: {% include figure.html src="/assets/images/x.png" alt="..." caption="..." %}
+`caption` is optional; omit it for a plain rounded, full-width image without kramdown's own <p> wrapper.
+{%- endcomment -%}
+<figure class="pg-figure">
+  <img src="{{ include.src | relative_url }}" alt="{{ include.alt | default: '' | escape }}" loading="lazy">
+  {%- if include.caption %}
+  <figcaption>{{ include.caption }}</figcaption>
+  {%- endif %}
+</figure>

@@ -5,6 +5,13 @@ layout: default
 Reads a "projects" collection: "projects" for the default language, "projects_<lang>"
 (e.g. "projects_ru") for others — see _includes/sections/cards.html for why.
 Set `page.collection_name: other_name` to point this page at a differently named collection.
+
+Cards are laid out as a "bento" gallery (see /styleguide/), gravity-ui.com's "Our libraries" style:
+one large featured tile plus smaller ones. The first project with `featured: true` in its front
+matter is used as the large tile; with none flagged, the first project in the collection is used.
+It's rendered first in the grid — with dense packing, a later large tile tends to leave a gap where
+an earlier auto-placed small tile already claimed part of its 2x2 area.
+Give a project a `badge:` (e.g. a year or category) to show it in the tile's overlay.
 {%- endcomment -%}
 {%- assign pg_pl_lang = page.lang | default: site.default_lang -%}
 {%- assign pg_pl_default_lang = site.default_lang | default: "en" -%}
@@ -14,15 +21,19 @@ Set `page.collection_name: other_name` to point this page at a differently named
   {%- assign pg_pl_key = pg_pl_base | append: "_" | append: pg_pl_lang -%}
 {%- endunless -%}
 {%- assign pg_pl_items = site[pg_pl_key] -%}
+{%- assign pg_pl_featured = pg_pl_items | where: "featured", true | first -%}
+{%- unless pg_pl_featured -%}{%- assign pg_pl_featured = pg_pl_items | first -%}{%- endunless -%}
+{%- assign pg_pl_rest = pg_pl_items | where_exp: "pg_pl_item", "pg_pl_item != pg_pl_featured" -%}
 <div class="pg-container pg-page">
   <header class="pg-page__header">
     <h1 class="pg-page__title">{{ page.title }}</h1>
     {%- if page.lead %}<p class="pg-page__lead">{{ page.lead }}</p>{% endif %}
   </header>
   {%- if pg_pl_items.size > 0 %}
-  <div class="pg-grid">
-    {%- for pg_item in pg_pl_items %}
-    {% include card.html title=pg_item.title text=pg_item.excerpt url=pg_item.url image=pg_item.image tags=pg_item.tags %}
+  <div class="pg-grid pg-grid_bento">
+    {% include card.html view="media" title=pg_pl_featured.title url=pg_pl_featured.url image=pg_pl_featured.image image_alt=pg_pl_featured.image_alt badge=pg_pl_featured.badge badge_icon=pg_pl_featured.badge_icon tile_size="lg" %}
+    {%- for pg_item in pg_pl_rest %}
+    {% include card.html view="media" title=pg_item.title url=pg_item.url image=pg_item.image image_alt=pg_item.image_alt badge=pg_item.badge badge_icon=pg_item.badge_icon %}
     {%- endfor %}
   </div>
   {%- else %}

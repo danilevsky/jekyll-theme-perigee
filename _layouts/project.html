@@ -16,7 +16,7 @@ layout: default
     </ul>
     {%- endif %}
   </header>
-  {%- if page.image %}<img class="pg-project__cover" src="{{ page.image | relative_url }}" alt="">{% endif %}
+  {%- if page.image %}<img class="pg-project__cover" src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: '' | escape }}">{% endif %}
   <div class="pg-prose">
     {{ content }}
   </div>

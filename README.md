@@ -60,6 +60,7 @@ languages: [en, ru]   # order of the language switcher
 default_lang: en      # served from /, other languages from /<lang>/
 
 perigee:
+  palette: warm                # optional, see "Palettes" below
   logo: /assets/logo.svg       # optional
   logo_text: My site           # defaults to the site title
   copyright: Jane Doe          # footer text, defaults to the site title
@@ -189,6 +190,27 @@ Files then live in `_projects/` and `_projects_ru/` at the site root (not under 
 `project` layouts and the `cards` section resolve the right collection for the current language automatically.
 Give an item `translation_key: same-value` in both languages to link its translations.
 
+The `/projects/` gallery (the `projects` layout) lays cards out as a "bento" grid — one large featured tile
+plus smaller ones, in the style of gravity-ui.com's "Our libraries" — using the `card.html` include's
+`view="media"` cards (see [Images](#images) below and `/styleguide/`). Mark one project `featured: true` to
+make it the large tile; with none flagged, the first project in the collection is used.
+
+### Images
+
+- **Cover image** (post or project): set `image: /assets/images/whatever.jpg` (and `image_alt: ...` for
+  accessibility) in front matter. It's shown above the content on the post/project page, and as the card
+  thumbnail wherever that post or project appears in a listing (blog index, latest-posts section, related
+  posts, the projects gallery).
+- **Project gallery badge:** a project can also set `badge: "2026"` (any short text) and, optionally,
+  `badge_icon: calendar` (any icon from `_includes/icons/`) — shown as a small pill over the cover image in
+  the `/projects/` bento grid.
+- **Inline images in a post/project body:** plain Markdown, `![alt text](/assets/images/whatever.jpg)` — it's
+  automatically rounded and scaled to the content width by `_sass/perigee/_prose.scss`.
+- **With a caption:** `{% include figure.html src="/assets/images/whatever.jpg" alt="..." caption="..." %}`
+  inside the body, instead of plain Markdown.
+- There's no required folder for images; `assets/images/` in your own site (not the theme's) is a reasonable
+  default. Keep them next to your other site assets, not inside the theme's own `assets/`.
+
 ## Localization
 
 - **Content.** Put pages for extra languages under `/<lang>/` and posts under `<lang>/_posts/` (posts, unlike
@@ -205,9 +227,13 @@ Give an item `translation_key: same-value` in both languages to link its transla
 
 ## Components
 
-Buttons, cards, labels/badges, alerts, tabs, breadcrumbs, tables and more — see `/styleguide/` on the demo
-site for every component with copy-pasteable markup, or browse `_sass/perigee/components/` and the matching
-`_includes/*.html`.
+Buttons, cards (including the image-led `media` card used by the projects gallery), labels/badges, alerts,
+tabs, breadcrumbs, tables and more — see `/styleguide/` on the demo site for every component with
+copy-pasteable markup, or browse `_sass/perigee/components/` and the matching `_includes/*.html`.
+
+When embedding `card.html` (or anything else rendered as `<a>...</a>`) directly inside a Markdown post or
+page, wrap it in a block element — `<div class="pg-grid">{% raw %}{% include card.html ... %}{% endraw %}</div>`
+— otherwise kramdown mis-parses the lone `<a>` line and its real closing tag ends up as visible text.
 
 ## Customization
 
@@ -218,6 +244,40 @@ site for every component with copy-pasteable markup, or browse `_sass/perigee/co
 | Icons | Add `_includes/icons/<name>.svg` (any icon from [@gravity-ui/icons](https://gravity-ui.com/icons)) and use `{% include icon.html name="<name>" %}` |
 | Home page sections | Add `_includes/sections/<type>.html` |
 | Any layout or include | Copy it from the theme into your site and edit |
+
+### Palettes
+
+By default Perigee uses Gravity UI's own colors. The theme also ships optional palettes, off unless you
+turn one on:
+
+| Palette | Look |
+|---------|------|
+| `warm` | Warm off-white background (`#faf9f7`), near-black warm text, a single amber accent (`#ffbe5c`) in both themes, darker amber links in the light theme for readable contrast, and an ambient amber glow on every page — two soft spots at the top-left and top-right of the window that stay in place while the page scrolls (the same effect as xonagdev.ru). Used by this demo site. |
+
+To enable one, add it to `_config.yml` and rebuild:
+
+```yaml
+perigee:
+  palette: warm
+```
+
+Remove the line (or leave it empty) to go back to Gravity UI's colors. The palette loads before your own
+`_sass/perigee-custom.scss`, so you can still tweak any of its values there, for example
+`:root { --g-color-base-brand: #5282ff; }`.
+
+If your site overrides `assets/css/main.scss` itself, the config option has no effect — add the palette
+there directly, between the theme and your customizations:
+
+```scss
+@use "perigee";
+@use "perigee/palettes/warm";
+@use "perigee-custom";
+```
+
+To make your own palette, copy `_sass/perigee/palettes/_warm.scss` from the theme into your site's
+`_sass/perigee/palettes/<name>.scss`, change the values and set `palette: <name>`. Keep light-theme link
+colors at a 4.5:1 contrast ratio or better against the background — a bright accent that works for
+buttons is usually too pale for text.
 
 ## Development
 

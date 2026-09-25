@@ -66,6 +66,22 @@
     border-radius: var(--g-border-radius-l);
   }
 
+  figure {
+    margin: 0 0 1em;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  figcaption {
+    margin-top: var(--g-spacing-2);
+    color: var(--g-color-text-hint);
+    font: var(--g-text-caption-2-font);
+    text-align: center;
+  }
+
   code {
     padding: 1px 4px;
     border-radius: var(--g-border-radius-xs);

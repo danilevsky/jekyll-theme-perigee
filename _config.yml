@@ -11,6 +11,7 @@ default_lang: en
 
 perigee:
   logo_text: Perigee
+  palette: warm   # optional; omit for Gravity UI's own palette (see README § Palettes)
   social:
     - icon: logo-github
       url: https://github.com/danilevsky/jekyll-theme-perigee

@@ -1,0 +1,73 @@
+// Optional "warm" palette: a warm off-white background, near-black warm text and a single amber
+// accent in both themes, plus a soft glow across the top of every page. Off by default — enable it with
+// `perigee: { palette: warm }` in _config.yml (see README § Palettes).
+
+@use "sass:color";
+
+$amber: #ffbe5c;
+$amber-hover: #f7ae4d;
+
+@mixin accent {
+  --g-color-base-brand: #{$amber};
+  --g-color-base-brand-hover: #{$amber-hover};
+  --g-color-line-brand: #{$amber};
+}
+
+// Amber text is unreadable on a light background (~1.6:1), so light-theme links use a darker amber
+// (5.1:1 on #faf9f7; 7.3:1 on hover) and only the dark theme uses the bright one.
+@mixin dark-links {
+  --g-color-text-link: #{$amber};
+  --g-color-text-link-hover: #ffd08a;
+}
+
+:root {
+  @include accent;
+  --g-color-base-background: #faf9f7;
+  --g-color-text-primary: #1c1916;
+  --g-color-text-link: #9a5c00;
+  --g-color-text-link-hover: #7a4800;
+}
+
+:root[data-theme="dark"] {
+  @include accent;
+  @include dark-links;
+}
+
+// Matches the no-JS system-dark fallback in _sass/perigee/_themes.scss.
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include accent;
+    @include dark-links;
+  }
+}
+
+// Ambient glow, same mechanics as xonagdev.ru's `.grid-bg`: a fixed, viewport-sized layer (it stays put
+// while the page scrolls) with two soft amber spots, top-left and top-right. `inset: 0` sizes it to the
+// viewport exactly, so it can't cause a horizontal scroll (an earlier version with negative insets did).
+// z-index: -1 puts it under all page content without having to lift <main>/<footer> into new stacking
+// contexts; it still paints above the page background because body's background propagates to the canvas.
+:root {
+  --pg-glow-color: #{color.change($amber, $alpha: 0.16)};
+}
+
+:root[data-theme="dark"] {
+  --pg-glow-color: #{color.change($amber, $alpha: 0.2)};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --pg-glow-color: #{color.change($amber, $alpha: 0.2)};
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(700px 420px at 12% -8%, var(--pg-glow-color), transparent 60%),
+    radial-gradient(600px 380px at 100% 0%, var(--pg-glow-color), transparent 55%);
+  opacity: 0.7;
+}

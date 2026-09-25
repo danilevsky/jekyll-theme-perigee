@@ -14,7 +14,7 @@
   {%- if pg_s_posts.size > 0 %}
   <div class="pg-grid pg-grid_cols_3">
     {%- for pg_post in pg_s_posts limit: pg_s_limit %}
-    {% include card.html title=pg_post.title text=pg_post.excerpt url=pg_post.url tags=pg_post.tags %}
+    {% include card.html title=pg_post.title text=pg_post.excerpt url=pg_post.url tags=pg_post.tags image=pg_post.image image_alt=pg_post.image_alt %}
     {%- endfor %}
   </div>
   {%- else %}

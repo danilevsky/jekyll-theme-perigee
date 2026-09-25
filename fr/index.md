@@ -16,6 +16,7 @@ sections:
   - type: cards
     title: Projets
     collection: projects
+    card_view: media
     limit: 3
     cols: 3
     all_title: Tous les projets

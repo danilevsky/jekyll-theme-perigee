@@ -4,6 +4,11 @@ lead: "「projects」コレクションのサンプル項目です。"
 excerpt: "「projects」コレクションのサンプル項目で、projectレイアウトを示しています。"
 tags: [デモ]
 translation_key: example-project
+featured: true
+image: /demo-assets/images/sample-cover-1.svg
+image_alt: 抽象的なグラデーションのイラスト
+badge: "2026"
+badge_icon: calendar
 ---
 
 このページは `projects_ja` コレクション（`_projects_ja/example-project.md`）から生成され、`project`

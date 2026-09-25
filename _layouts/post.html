@@ -42,7 +42,7 @@ layout: default
     </p>
   </header>
 
-  {%- if page.image %}<img class="pg-project__cover" src="{{ page.image | relative_url }}" alt="">{% endif %}
+  {%- if page.image %}<img class="pg-project__cover" src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: '' | escape }}">{% endif %}
 
   <div class="pg-prose">
     {{ content }}
@@ -82,7 +82,7 @@ layout: default
     <h2 class="pg-related__title">{% include t.html key="related_posts" lang=pg_p_lang %}</h2>
     <div class="pg-grid pg-grid_cols_3">
       {%- for pg_post in pg_related limit: 3 %}
-      {% include card.html title=pg_post.title text=pg_post.excerpt url=pg_post.url tags=pg_post.tags %}
+      {% include card.html title=pg_post.title text=pg_post.excerpt url=pg_post.url tags=pg_post.tags image=pg_post.image image_alt=pg_post.image_alt %}
       {%- endfor %}
     </div>
   </div>

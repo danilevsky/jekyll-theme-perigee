@@ -2,4 +2,7 @@
 sitemap: false
 ---
 @use "perigee";
+{%- if site.perigee.palette and site.perigee.palette != "" %}
+@use "perigee/palettes/{{ site.perigee.palette }}";
+{%- endif %}
 @use "perigee-custom";
