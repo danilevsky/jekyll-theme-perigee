@@ -1,0 +1,12 @@
+{%- comment -%}Section type "cta": title, text, action {title, url}.{%- endcomment -%}
+<section class="pg-container">
+  <div class="pg-cta">
+    <div>
+      <h2 class="pg-cta__title">{{ include.section.title }}</h2>
+      {%- if include.section.text %}<p class="pg-cta__text">{{ include.section.text }}</p>{% endif -%}
+    </div>
+    {%- if include.section.action %}
+    <a class="pg-button pg-button_view_action pg-button_size_xl" href="{{ include.section.action.url | relative_url }}">{{ include.section.action.title }}</a>
+    {%- endif -%}
+  </div>
+</section>

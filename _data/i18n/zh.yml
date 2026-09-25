@@ -1,0 +1,40 @@
+# UI strings for Simplified Chinese. Override any key in your site's _data/i18n/zh.yml.
+lang_name: 中文
+locale: zh_CN
+dir: ltr
+
+date_format: "%y年%m%d日"
+months: [1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+
+skip_to_content: 跳转到内容
+nav_main: 主导航
+menu_open: 打开菜单
+menu_close: 关闭菜单
+language: 语言
+theme: 主题
+theme_system: 跟随系统
+theme_light: 浅色主题
+theme_dark: 深色主题
+home: 首页
+blog: 博客
+read_more: 阅读更多
+all_posts: 全部文章
+min_read: "阅读需 %{n} 分钟"
+published: 发布于
+updated: 更新于
+tags: 标签
+not_found_title: 页面未找到
+not_found_text: 您查找的页面不存在或已被移动。
+back_home: 返回首页
+translation_available: 本页面提供中文版本
+toc: 目录
+copy_code: 复制
+copy_code_done: 已复制
+previous_post: 上一篇
+next_post: 下一篇
+related_posts: 相关文章
+archive: 归档
+all_tags: 全部标签
+tagged_with: "标签“%{tag}”"
+no_items: 这里还没有内容。
+projects: 项目

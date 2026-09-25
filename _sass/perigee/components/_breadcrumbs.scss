@@ -1,0 +1,35 @@
+.pg-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--g-spacing-1);
+  margin: 0 0 var(--g-spacing-4);
+  padding: 0;
+  list-style: none;
+  color: var(--g-color-text-secondary);
+  font: var(--g-text-body-1-font);
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--g-spacing-1);
+  }
+
+  a {
+    color: var(--g-color-text-secondary);
+
+    &:hover {
+      color: var(--g-color-text-primary);
+    }
+  }
+
+  .pg-icon {
+    width: 12px;
+    height: 12px;
+    opacity: 0.6;
+  }
+
+  [aria-current] {
+    color: var(--g-color-text-primary);
+  }
+}

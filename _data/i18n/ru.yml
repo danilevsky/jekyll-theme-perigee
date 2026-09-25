@@ -1,0 +1,41 @@
+# UI strings for Russian. Override any key in your site's _data/i18n/ru.yml.
+lang_name: Русский
+locale: ru_RU
+dir: ltr
+
+date_format: "%d %M %y"
+months: [январь, февраль, март, апрель, май, июнь, июль, август, сентябрь, октябрь, ноябрь, декабрь]
+months_genitive: [января, февраля, марта, апреля, мая, июня, июля, августа, сентября, октября, ноября, декабря]
+
+skip_to_content: Перейти к содержимому
+nav_main: Основная навигация
+menu_open: Открыть меню
+menu_close: Закрыть меню
+language: Язык
+theme: Тема
+theme_system: Системная тема
+theme_light: Светлая тема
+theme_dark: Тёмная тема
+home: Главная
+blog: Блог
+read_more: Читать далее
+all_posts: Все записи
+min_read: "%{n} мин чтения"
+published: Опубликовано
+updated: Обновлено
+tags: Теги
+not_found_title: Страница не найдена
+not_found_text: Такой страницы нет или она была перемещена.
+back_home: На главную
+translation_available: Эта страница доступна на русском языке
+toc: Содержание
+copy_code: Копировать
+copy_code_done: Скопировано
+previous_post: Предыдущая
+next_post: Следующая
+related_posts: Похожие записи
+archive: Архив
+all_tags: Все теги
+tagged_with: "С тегом «%{tag}»"
+no_items: Здесь пока пусто.
+projects: Проекты

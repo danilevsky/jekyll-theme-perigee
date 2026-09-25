@@ -1,0 +1,27 @@
+@use "tokens/common";
+@use "tokens/light";
+@use "tokens/dark";
+
+:root {
+  @include common.common;
+  @include light.light;
+  --g-flow-direction: 1;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  @include dark.dark;
+  color-scheme: dark;
+}
+
+// Without JavaScript the theme follows the OS setting.
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include dark.dark;
+    color-scheme: dark;
+  }
+}
+
+[dir="rtl"] {
+  --g-flow-direction: -1;
+}

@@ -1,0 +1,40 @@
+# UI strings for Portuguese. Override any key in your site's _data/i18n/pt.yml.
+lang_name: Português
+locale: pt_PT
+dir: ltr
+
+date_format: "%d de %m de %y"
+months: [janeiro, fevereiro, março, abril, maio, junho, julho, agosto, setembro, outubro, novembro, dezembro]
+
+skip_to_content: Pular para o conteúdo
+nav_main: Navegação principal
+menu_open: Abrir menu
+menu_close: Fechar menu
+language: Idioma
+theme: Tema
+theme_system: Tema do sistema
+theme_light: Tema claro
+theme_dark: Tema escuro
+home: Início
+blog: Blog
+read_more: Leia mais
+all_posts: Todas as publicações
+min_read: "%{n} min de leitura"
+published: Publicado
+updated: Atualizado
+tags: Etiquetas
+not_found_title: Página não encontrada
+not_found_text: A página que procura não existe ou foi movida.
+back_home: Voltar ao início
+translation_available: Esta página também está disponível em português
+toc: Índice
+copy_code: Copiar
+copy_code_done: Copiado
+previous_post: Anterior
+next_post: Seguinte
+related_posts: Publicações relacionadas
+archive: Arquivo
+all_tags: Todas as etiquetas
+tagged_with: "Marcado com «%{tag}»"
+no_items: Ainda não há nada aqui.
+projects: Projetos

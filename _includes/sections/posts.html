@@ -1,0 +1,23 @@
+{%- comment -%}Section type "posts": recent posts of the page's language. Params: title, text, limit (default 3).{%- endcomment -%}
+{%- assign pg_s_lang = page.lang | default: site.default_lang -%}
+{%- assign pg_s_posts = site.posts | where: "lang", pg_s_lang -%}
+{%- assign pg_s_limit = include.section.limit | default: 3 -%}
+{%- capture pg_s_blog_url %}{% include lang-home.html lang=pg_s_lang %}blog/{% endcapture -%}
+<section class="pg-section pg-container">
+  <div class="pg-section__header">
+    <div>
+      {%- if include.section.title %}<h2 class="pg-section__title">{{ include.section.title }}</h2>{% endif -%}
+      {%- if include.section.text %}<p class="pg-section__text">{{ include.section.text }}</p>{% endif -%}
+    </div>
+    <a class="pg-link_arrow" href="{{ pg_s_blog_url }}">{% include t.html key="all_posts" lang=pg_s_lang %}{% include icon.html name="arrow-right" %}</a>
+  </div>
+  {%- if pg_s_posts.size > 0 %}
+  <div class="pg-grid pg-grid_cols_3">
+    {%- for pg_post in pg_s_posts limit: pg_s_limit %}
+    {% include card.html title=pg_post.title text=pg_post.excerpt url=pg_post.url tags=pg_post.tags %}
+    {%- endfor %}
+  </div>
+  {%- else %}
+  <p>{% include t.html key="no_items" lang=pg_s_lang %}</p>
+  {%- endif %}
+</section>

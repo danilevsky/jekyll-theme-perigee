@@ -1,0 +1,129 @@
+.pg-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--g-color-base-background) 85%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--g-color-line-generic);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--g-spacing-6);
+    height: var(--pg-header-height);
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--g-spacing-2);
+    color: var(--g-color-text-primary);
+    font: var(--g-text-subheader-3-font);
+
+    &:hover {
+      color: var(--g-color-text-primary);
+    }
+  }
+
+  &__nav ul {
+    display: flex;
+    gap: var(--g-spacing-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    display: block;
+    padding: var(--g-spacing-2) var(--g-spacing-3);
+    border-radius: var(--g-border-radius-l);
+    color: var(--g-color-text-complementary);
+    transition: background-color var(--pg-transition), color var(--pg-transition);
+
+    &:hover {
+      background: var(--g-color-base-simple-hover);
+      color: var(--g-color-text-primary);
+    }
+
+    &[aria-current] {
+      color: var(--g-color-text-primary);
+      font-weight: var(--g-text-accent-font-weight);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--g-spacing-1);
+    margin-inline-start: auto;
+  }
+
+  &__menu-toggle,
+  &__menu-icon-close {
+    display: none;
+  }
+
+  &[data-pg-menu-open] &__menu-icon-open {
+    display: none;
+  }
+
+  &[data-pg-menu-open] &__menu-icon-close {
+    display: inline-flex;
+  }
+}
+
+.pg-theme-switch {
+  .pg-icon {
+    display: none;
+  }
+
+  :root:not(.pg-js) & {
+    display: none;
+  }
+}
+
+[data-theme-pref="system"] .pg-theme-switch__icon_system,
+[data-theme-pref="light"] .pg-theme-switch__icon_light,
+[data-theme-pref="dark"] .pg-theme-switch__icon_dark {
+  display: inline-flex;
+}
+
+// .pg-js is a class on <html>, an ancestor of .pg-header — these rules must therefore
+// nest .pg-header *inside* .pg-js, not the other way around (a mistake that silently
+// never matches, since .pg-header can never be an ancestor of .pg-js).
+@media (max-width: 768px) {
+  .pg-header__social {
+    display: none;
+  }
+
+  // Without JS, the nav wraps below the logo instead of collapsing into a menu.
+  :root:not(.pg-js) .pg-header__inner {
+    flex-wrap: wrap;
+    height: auto;
+    padding-block: var(--g-spacing-2);
+  }
+
+  .pg-js {
+    .pg-header__menu-toggle {
+      display: inline-flex;
+    }
+
+    .pg-header__nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      inset-inline: 0;
+      padding: var(--g-spacing-2) var(--pg-gutter) var(--g-spacing-4);
+      background: var(--g-color-base-background);
+      border-bottom: 1px solid var(--g-color-line-generic);
+
+      ul {
+        flex-direction: column;
+      }
+    }
+
+    .pg-header[data-pg-menu-open] .pg-header__nav {
+      display: block;
+    }
+  }
+}

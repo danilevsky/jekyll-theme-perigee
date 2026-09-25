@@ -1,0 +1,16 @@
+{%- comment -%}
+Usage: {% include date.html date=page.date %}. Format comes from date_format in _data/i18n.
+Internal variables are prefixed pg_d_ (not just pg_) because {% include %} shares the caller's
+Liquid scope in Jekyll — a generic name here could silently shadow a caller's loop variable
+(e.g. a `for pg_year in ...` in the template calling this include).
+{%- endcomment -%}
+{%- include lang.html -%}
+{%- assign pg_d_fmt = pg_i18n.date_format | default: pg_i18n_default.date_format | default: "%y-%m-%d" -%}
+{%- assign pg_d_months = pg_i18n.months | default: pg_i18n_default.months -%}
+{%- assign pg_d_months_gen = pg_i18n.months_genitive | default: pg_d_months -%}
+{%- assign pg_d_mi = include.date | date: "%-m" | minus: 1 -%}
+{%- assign pg_d_day = include.date | date: "%-d" -%}
+{%- assign pg_d_year = include.date | date: "%Y" -%}
+<time datetime="{{ include.date | date_to_xmlschema }}">
+  {{- pg_d_fmt | replace: "%M", pg_d_months_gen[pg_d_mi] | replace: "%m", pg_d_months[pg_d_mi] | replace: "%d", pg_d_day | replace: "%y", pg_d_year -}}
+</time>

@@ -1,0 +1,22 @@
+.pg-link_arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--g-spacing-1);
+  text-decoration: none;
+
+  .pg-icon {
+    transition: transform var(--pg-transition);
+    transform: translateX(calc(var(--g-flow-direction, 1) * 0px));
+  }
+
+  &:hover .pg-icon {
+    transform: translateX(calc(var(--g-flow-direction, 1) * 3px));
+  }
+}
+
+.pg-divider {
+  height: 1px;
+  margin: var(--g-spacing-8) 0;
+  border: 0;
+  background: var(--g-color-line-generic);
+}

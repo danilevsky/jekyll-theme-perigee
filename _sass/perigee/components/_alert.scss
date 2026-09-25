@@ -1,0 +1,28 @@
+// Usage in Markdown: > Text\n{: .pg-alert .pg-alert_theme_info}
+.pg-prose blockquote.pg-alert {
+  border-inline-start-width: 4px;
+  border-inline-start-style: solid;
+  border-inline-start-color: var(--pg-alert-line, var(--g-color-line-generic));
+  background: var(--pg-alert-bg, var(--g-color-base-generic-ultralight));
+  color: var(--g-color-text-primary);
+}
+
+.pg-alert_theme_info {
+  --pg-alert-line: var(--g-color-line-info);
+  --pg-alert-bg: var(--g-color-base-info-light);
+}
+
+.pg-alert_theme_success {
+  --pg-alert-line: var(--g-color-line-positive);
+  --pg-alert-bg: var(--g-color-base-positive-light);
+}
+
+.pg-alert_theme_warning {
+  --pg-alert-line: var(--g-color-line-warning);
+  --pg-alert-bg: var(--g-color-base-warning-light);
+}
+
+.pg-alert_theme_danger {
+  --pg-alert-line: var(--g-color-line-danger);
+  --pg-alert-bg: var(--g-color-base-danger-light);
+}

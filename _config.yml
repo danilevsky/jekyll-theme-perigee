@@ -1,0 +1,125 @@
+# Demo site for jekyll-theme-perigee. Sites using the gem copy what they need from here.
+
+title: Perigee
+description: A multilingual Jekyll theme inspired by the Gravity UI design system.
+url: ""
+baseurl: ""
+
+# default_lang is served from the site root, the others from /<lang>/.
+languages: [en, ru, es, fr, de, pt, ko, ja, zh]
+default_lang: en
+
+perigee:
+  logo_text: Perigee
+  social:
+    - icon: logo-github
+      url: https://github.com/danilevsky/jekyll-theme-perigee
+      label: GitHub
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /blog/:title/
+
+# Jekyll only reads a custom collection from a single top-level "_<name>" directory
+# (unlike _posts, which it also reads from language subfolders) — so each language
+# gets its own collection: "projects" for the default language, "projects_<lang>" for
+# the rest. Layouts and the "cards" section look up the right one via <collection>_<lang>.
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+  projects_ru:
+    output: true
+    permalink: /ru/projects/:name/
+  projects_es:
+    output: true
+    permalink: /es/projects/:name/
+  projects_fr:
+    output: true
+    permalink: /fr/projects/:name/
+  projects_de:
+    output: true
+    permalink: /de/projects/:name/
+  projects_pt:
+    output: true
+    permalink: /pt/projects/:name/
+  projects_ko:
+    output: true
+    permalink: /ko/projects/:name/
+  projects_ja:
+    output: true
+    permalink: /ja/projects/:name/
+  projects_zh:
+    output: true
+    permalink: /zh/projects/:name/
+
+defaults:
+  - scope: { path: "" }
+    values: { layout: page, lang: en }
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "", type: projects }
+    values: { layout: project }
+  - scope: { path: "", type: projects_ru }
+    values: { layout: project, lang: ru }
+  - scope: { path: "", type: projects_es }
+    values: { layout: project, lang: es }
+  - scope: { path: "", type: projects_fr }
+    values: { layout: project, lang: fr }
+  - scope: { path: "", type: projects_de }
+    values: { layout: project, lang: de }
+  - scope: { path: "", type: projects_pt }
+    values: { layout: project, lang: pt }
+  - scope: { path: "", type: projects_ko }
+    values: { layout: project, lang: ko }
+  - scope: { path: "", type: projects_ja }
+    values: { layout: project, lang: ja }
+  - scope: { path: "", type: projects_zh }
+    values: { layout: project, lang: zh }
+  - scope: { path: "ru" }
+    values: { lang: ru }
+  - scope: { path: "ru", type: posts }
+    values: { lang: ru, permalink: /ru/blog/:title/ }
+  - scope: { path: "es" }
+    values: { lang: es }
+  - scope: { path: "es", type: posts }
+    values: { lang: es, permalink: /es/blog/:title/ }
+  - scope: { path: "fr" }
+    values: { lang: fr }
+  - scope: { path: "fr", type: posts }
+    values: { lang: fr, permalink: /fr/blog/:title/ }
+  - scope: { path: "de" }
+    values: { lang: de }
+  - scope: { path: "de", type: posts }
+    values: { lang: de, permalink: /de/blog/:title/ }
+  - scope: { path: "pt" }
+    values: { lang: pt }
+  - scope: { path: "pt", type: posts }
+    values: { lang: pt, permalink: /pt/blog/:title/ }
+  - scope: { path: "ko" }
+    values: { lang: ko }
+  - scope: { path: "ko", type: posts }
+    values: { lang: ko, permalink: /ko/blog/:title/ }
+  - scope: { path: "ja" }
+    values: { lang: ja }
+  - scope: { path: "ja", type: posts }
+    values: { lang: ja, permalink: /ja/blog/:title/ }
+  - scope: { path: "zh" }
+    values: { lang: zh }
+  - scope: { path: "zh", type: posts }
+    values: { lang: zh, permalink: /zh/blog/:title/ }
+
+exclude:
+  - scripts/
+  - package.json
+  - package-lock.json
+  - "*.gemspec"
+  - README.md
+  - CLAUDE.md
+  - CHANGELOG.md
+  - CONTRIBUTING.md
+  - LICENSE
+  - NOTICE

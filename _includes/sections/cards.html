@@ -1,0 +1,38 @@
+{%- comment -%}
+Section type "cards": either a literal `items` array ({title, text, url, icon, image, tags})
+or `collection: <name>` to pull from a Jekyll collection.
+Jekyll only reads a collection from one top-level "_<name>" directory, so a multilingual
+collection needs one per language named "<name>_<lang>" (e.g. "projects" / "projects_ru");
+the default language uses the plain name.
+Params: title, text, items|collection, limit, cols (2|3|4), card_view, all_title, all_url.
+{%- endcomment -%}
+{%- assign pg_s_lang = page.lang | default: site.default_lang -%}
+{%- assign pg_s_default_lang = site.default_lang | default: "en" -%}
+{%- if include.section.collection -%}
+  {%- assign pg_s_coll_key = include.section.collection -%}
+  {%- unless pg_s_lang == pg_s_default_lang -%}
+    {%- assign pg_s_coll_key = include.section.collection | append: "_" | append: pg_s_lang -%}
+  {%- endunless -%}
+  {%- assign pg_s_items = site[pg_s_coll_key] -%}
+{%- else -%}
+  {%- assign pg_s_items = include.section.items -%}
+{%- endif -%}
+{%- assign pg_s_limit = include.section.limit | default: 999 -%}
+<section class="pg-section pg-container">
+  {%- if include.section.title or include.section.all_url %}
+  <div class="pg-section__header">
+    <div>
+      {%- if include.section.title %}<h2 class="pg-section__title">{{ include.section.title }}</h2>{% endif -%}
+      {%- if include.section.text %}<p class="pg-section__text">{{ include.section.text }}</p>{% endif -%}
+    </div>
+    {%- if include.section.all_url %}
+    <a class="pg-link_arrow" href="{{ include.section.all_url | relative_url }}">{{ include.section.all_title }}{% include icon.html name="arrow-right" %}</a>
+    {%- endif -%}
+  </div>
+  {%- endif %}
+  <div class="pg-grid{% if include.section.cols %} pg-grid_cols_{{ include.section.cols }}{% endif %}">
+    {%- for pg_item in pg_s_items limit: pg_s_limit %}
+    {% include card.html title=pg_item.title text=pg_item.text url=pg_item.url image=pg_item.image icon=pg_item.icon tags=pg_item.tags view=include.section.card_view %}
+    {%- endfor %}
+  </div>
+</section>

@@ -1,0 +1,85 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--pg-header-height) + var(--g-spacing-4));
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--g-color-base-background);
+  color: var(--g-color-text-primary);
+  font: var(--g-text-body-2-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--g-color-text-link);
+  text-decoration: none;
+  transition: color var(--pg-transition);
+
+  &:hover {
+    color: var(--g-color-text-link-hover);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--g-color-line-focus);
+  outline-offset: 2px;
+  border-radius: var(--g-focus-border-radius);
+}
+
+::selection {
+  background: var(--g-color-base-selection);
+}
+
+.pg-main {
+  flex: 1 0 auto;
+}
+
+.pg-container {
+  width: 100%;
+  max-width: calc(var(--pg-container-width) + 2 * var(--pg-gutter));
+  margin-inline: auto;
+  padding-inline: var(--pg-gutter);
+}
+
+.pg-skip-link {
+  position: absolute;
+  inset-inline-start: var(--g-spacing-2);
+  top: -100px;
+  z-index: 100;
+  padding: var(--g-spacing-2) var(--g-spacing-4);
+  border-radius: var(--g-border-radius-l);
+  background: var(--g-color-base-brand);
+  color: var(--g-color-text-brand-contrast);
+
+  &:focus {
+    top: var(--g-spacing-2);
+    color: var(--g-color-text-brand-contrast);
+  }
+}
+
+.pg-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

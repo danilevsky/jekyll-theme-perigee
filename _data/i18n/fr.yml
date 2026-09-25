@@ -1,0 +1,40 @@
+# UI strings for French. Override any key in your site's _data/i18n/fr.yml.
+lang_name: Français
+locale: fr_FR
+dir: ltr
+
+date_format: "%d %m %y"
+months: [janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre]
+
+skip_to_content: Passer au contenu
+nav_main: Navigation principale
+menu_open: Ouvrir le menu
+menu_close: Fermer le menu
+language: Langue
+theme: Thème
+theme_system: Thème système
+theme_light: Thème clair
+theme_dark: Thème sombre
+home: Accueil
+blog: Blog
+read_more: Lire la suite
+all_posts: Tous les articles
+min_read: "%{n} min de lecture"
+published: Publié
+updated: Mis à jour
+tags: Étiquettes
+not_found_title: Page introuvable
+not_found_text: La page que vous recherchez n'existe pas ou a été déplacée.
+back_home: Retour à l'accueil
+translation_available: Cette page est également disponible en français
+toc: Sommaire
+copy_code: Copier
+copy_code_done: Copié
+previous_post: Précédent
+next_post: Suivant
+related_posts: Articles similaires
+archive: Archives
+all_tags: Toutes les étiquettes
+tagged_with: "Étiqueté « %{tag} »"
+no_items: Rien ici pour l'instant.
+projects: Projets

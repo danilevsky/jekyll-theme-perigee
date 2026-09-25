@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<article class="pg-container pg-page">
+  {%- if page.title %}
+  <header class="pg-page__header">
+    <h1 class="pg-page__title">{{ page.title }}</h1>
+    {%- if page.lead %}<p class="pg-page__lead">{{ page.lead }}</p>{% endif %}
+  </header>
+  {%- endif %}
+  <div class="pg-prose">
+    {{ content }}
+  </div>
+</article>

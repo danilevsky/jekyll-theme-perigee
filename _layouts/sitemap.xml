@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- assign pg_sm_pages = site.pages | where_exp: "p", "p.sitemap != false" -%}
+{%- for pg_p in pg_sm_pages %}
+  <url>
+    <loc>{{ pg_p.url | absolute_url }}</loc>
+    {%- if pg_p.translation_key -%}
+      {%- assign pg_sm_translations = site.pages | concat: site.documents | where: "translation_key", pg_p.translation_key -%}
+      {%- for pg_tr in pg_sm_translations %}
+    <xhtml:link rel="alternate" hreflang="{{ pg_tr.lang | default: site.default_lang }}" href="{{ pg_tr.url | absolute_url }}" />
+      {%- endfor -%}
+    {%- endif %}
+  </url>
+{%- endfor %}
+{%- for pg_coll in site.collections %}
+  {%- assign pg_coll_docs = pg_coll.docs | where_exp: "d", "d.sitemap != false" -%}
+  {%- for pg_p in pg_coll_docs %}
+  <url>
+    <loc>{{ pg_p.url | absolute_url }}</loc>
+    {%- if pg_p.translation_key -%}
+      {%- assign pg_sm_translations = site.pages | concat: site.documents | where: "translation_key", pg_p.translation_key -%}
+      {%- for pg_tr in pg_sm_translations %}
+    <xhtml:link rel="alternate" hreflang="{{ pg_tr.lang | default: site.default_lang }}" href="{{ pg_tr.url | absolute_url }}" />
+      {%- endfor -%}
+    {%- endif %}
+  </url>
+  {%- endfor %}
+{%- endfor %}
+</urlset>

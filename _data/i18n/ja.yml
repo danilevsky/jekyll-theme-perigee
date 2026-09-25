@@ -1,0 +1,40 @@
+# UI strings for Japanese. Override any key in your site's _data/i18n/ja.yml.
+lang_name: 日本語
+locale: ja_JP
+dir: ltr
+
+date_format: "%y年%m%d日"
+months: [1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+
+skip_to_content: コンテンツへスキップ
+nav_main: メインナビゲーション
+menu_open: メニューを開く
+menu_close: メニューを閉じる
+language: 言語
+theme: テーマ
+theme_system: システムのテーマ
+theme_light: ライトテーマ
+theme_dark: ダークテーマ
+home: ホーム
+blog: ブログ
+read_more: 続きを読む
+all_posts: すべての記事
+min_read: "%{n}分で読めます"
+published: 公開日
+updated: 更新日
+tags: タグ
+not_found_title: ページが見つかりません
+not_found_text: お探しのページは存在しないか、移動した可能性があります。
+back_home: ホームに戻る
+translation_available: このページは日本語でもご覧いただけます
+toc: 目次
+copy_code: コピー
+copy_code_done: コピーしました
+previous_post: 前の記事
+next_post: 次の記事
+related_posts: 関連記事
+archive: アーカイブ
+all_tags: すべてのタグ
+tagged_with: "「%{tag}」の記事"
+no_items: まだ何もありません。
+projects: プロジェクト

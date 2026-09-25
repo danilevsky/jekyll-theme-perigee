@@ -1,0 +1,45 @@
+---
+layout: default
+---
+{%- assign pg_b_lang = page.lang | default: site.default_lang -%}
+{%- assign pg_b_posts = site.posts | where: "lang", pg_b_lang -%}
+{%- capture pg_b_tags_url %}{% include lang-home.html lang=pg_b_lang %}blog/tags/{% endcapture -%}
+<div class="pg-container pg-page">
+  <header class="pg-page__header">
+    <h1 class="pg-page__title">{{ page.title }}</h1>
+    {%- if page.lead %}<p class="pg-page__lead">{{ page.lead }}</p>{% endif %}
+  </header>
+
+  {%- if pg_b_posts.size > 0 %}
+  <div class="pg-grid pg-grid_cols_3">
+    {%- for pg_post in pg_b_posts limit: 3 %}
+    {% include card.html title=pg_post.title text=pg_post.excerpt url=pg_post.url tags=pg_post.tags %}
+    {%- endfor %}
+  </div>
+  {%- else %}
+  <p>{% include t.html key="no_items" lang=pg_b_lang %}</p>
+  {%- endif %}
+</div>
+
+{%- if pg_b_posts.size > 0 %}
+<section class="pg-section pg-container">
+  <div class="pg-section__header">
+    <h2 class="pg-section__title">{% include t.html key="archive" lang=pg_b_lang %}</h2>
+    <a class="pg-link_arrow" href="{{ pg_b_tags_url }}">{% include t.html key="all_tags" lang=pg_b_lang %}{% include icon.html name="arrow-right" %}</a>
+  </div>
+  <div class="pg-archive">
+    {%- assign pg_b_years = pg_b_posts | group_by_exp: "post", "post.date | date: '%Y'" -%}
+    {%- for pg_year in pg_b_years %}
+    <h3 class="pg-archive__year">{{ pg_year.name }}</h3>
+    <ul class="pg-archive__list">
+      {%- for pg_post in pg_year.items %}
+      <li class="pg-archive__item">
+        <span class="pg-archive__date">{% include date.html date=pg_post.date %}</span>
+        <a class="pg-archive__title" href="{{ pg_post.url | relative_url }}">{{ pg_post.title }}</a>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}

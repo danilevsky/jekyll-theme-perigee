@@ -1,0 +1,41 @@
+# UI strings for English. Override any key in your site's _data/i18n/en.yml.
+lang_name: English
+locale: en_US
+dir: ltr
+
+# Date format: %d day, %m month name, %M genitive month name, %y year.
+date_format: "%m %d, %y"
+months: [January, February, March, April, May, June, July, August, September, October, November, December]
+
+skip_to_content: Skip to content
+nav_main: Main navigation
+menu_open: Open menu
+menu_close: Close menu
+language: Language
+theme: Theme
+theme_system: System theme
+theme_light: Light theme
+theme_dark: Dark theme
+home: Home
+blog: Blog
+read_more: Read more
+all_posts: All posts
+min_read: "%{n} min read"
+published: Published
+updated: Updated
+tags: Tags
+not_found_title: Page not found
+not_found_text: The page you are looking for doesn't exist or has been moved.
+back_home: Back to home
+translation_available: This page is also available in English
+toc: Contents
+copy_code: Copy
+copy_code_done: Copied
+previous_post: Previous
+next_post: Next
+related_posts: Related posts
+archive: Archive
+all_tags: All tags
+tagged_with: "Tagged “%{tag}”"
+no_items: Nothing here yet.
+projects: Projects

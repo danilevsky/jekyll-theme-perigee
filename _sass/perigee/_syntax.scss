@@ -1,0 +1,21 @@
+// Rouge highlighting mapped to Gravity UI tokens; adapts automatically to the color theme.
+.highlight {
+  color: var(--g-color-text-primary);
+
+  .c, .cm, .c1, .cs { color: var(--g-color-text-hint); font-style: italic; }   // comments
+  .err { color: var(--g-color-text-danger); }
+  .k, .kc, .kd, .kn, .kp, .kr, .kt, .o { color: var(--g-color-text-info); }    // keywords, operators
+  .n, .na, .nb, .nc, .nf, .nx { color: var(--g-color-text-primary); }          // names
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .ss { color: var(--g-color-text-positive); } // strings
+  .m, .mf, .mi, .mo, .mh, .il { color: var(--g-color-text-brand-heavy); }      // numbers
+  .nt { color: var(--g-color-text-info); }                                    // tags
+  .na.tag-attr, .py { color: var(--g-color-text-warning); }
+  .gd { color: var(--g-color-text-danger); }                                  // diff removed
+  .gi { color: var(--g-color-text-positive); }                                // diff added
+  .gh, .gu { color: var(--g-color-text-hint); }
+}
+
+.language-plaintext,
+.no-highlight {
+  color: var(--g-color-text-primary);
+}

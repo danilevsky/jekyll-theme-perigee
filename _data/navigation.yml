@@ -1,0 +1,157 @@
+# Header navigation per language. `exact: true` marks the item active only on its own URL.
+en:
+  - title: Blog
+    url: /blog/
+  - title: Projects
+    url: /projects/
+  - title: About
+    url: /about/
+ru:
+  - title: Блог
+    url: /ru/blog/
+  - title: Проекты
+    url: /ru/projects/
+  - title: О теме
+    url: /ru/about/
+es:
+  - title: Blog
+    url: /es/blog/
+  - title: Proyectos
+    url: /es/projects/
+  - title: Sobre el tema
+    url: /es/about/
+fr:
+  - title: Blog
+    url: /fr/blog/
+  - title: Projets
+    url: /fr/projects/
+  - title: À propos du thème
+    url: /fr/about/
+de:
+  - title: Blog
+    url: /de/blog/
+  - title: Projekte
+    url: /de/projects/
+  - title: Über das Theme
+    url: /de/about/
+pt:
+  - title: Blog
+    url: /pt/blog/
+  - title: Projetos
+    url: /pt/projects/
+  - title: Sobre o tema
+    url: /pt/about/
+ko:
+  - title: 블로그
+    url: /ko/blog/
+  - title: 프로젝트
+    url: /ko/projects/
+  - title: 테마 소개
+    url: /ko/about/
+ja:
+  - title: ブログ
+    url: /ja/blog/
+  - title: プロジェクト
+    url: /ja/projects/
+  - title: テーマについて
+    url: /ja/about/
+zh:
+  - title: 博客
+    url: /zh/blog/
+  - title: 项目
+    url: /zh/projects/
+  - title: 关于主题
+    url: /zh/about/
+
+# Footer link columns per language.
+footer:
+  en:
+    - title: Site
+      links:
+        - { title: Home, url: / }
+        - { title: Blog, url: /blog/ }
+        - { title: Projects, url: /projects/ }
+    - title: More
+      links:
+        - { title: About, url: /about/ }
+        - { title: RSS feed, url: /feed.xml }
+  ru:
+    - title: Сайт
+      links:
+        - { title: Главная, url: /ru/ }
+        - { title: Блог, url: /ru/blog/ }
+        - { title: Проекты, url: /ru/projects/ }
+    - title: Дополнительно
+      links:
+        - { title: О теме, url: /ru/about/ }
+        - { title: RSS-лента, url: /ru/feed.xml }
+  es:
+    - title: Sitio
+      links:
+        - { title: Inicio, url: /es/ }
+        - { title: Blog, url: /es/blog/ }
+        - { title: Proyectos, url: /es/projects/ }
+    - title: Más
+      links:
+        - { title: Sobre el tema, url: /es/about/ }
+        - { title: Feed RSS, url: /es/feed.xml }
+  fr:
+    - title: Site
+      links:
+        - { title: Accueil, url: /fr/ }
+        - { title: Blog, url: /fr/blog/ }
+        - { title: Projets, url: /fr/projects/ }
+    - title: Plus
+      links:
+        - { title: À propos du thème, url: /fr/about/ }
+        - { title: Flux RSS, url: /fr/feed.xml }
+  de:
+    - title: Seite
+      links:
+        - { title: Startseite, url: /de/ }
+        - { title: Blog, url: /de/blog/ }
+        - { title: Projekte, url: /de/projects/ }
+    - title: Mehr
+      links:
+        - { title: Über das Theme, url: /de/about/ }
+        - { title: RSS-Feed, url: /de/feed.xml }
+  pt:
+    - title: Site
+      links:
+        - { title: Início, url: /pt/ }
+        - { title: Blog, url: /pt/blog/ }
+        - { title: Projetos, url: /pt/projects/ }
+    - title: Mais
+      links:
+        - { title: Sobre o tema, url: /pt/about/ }
+        - { title: Feed RSS, url: /pt/feed.xml }
+  ko:
+    - title: 사이트
+      links:
+        - { title: 홈, url: /ko/ }
+        - { title: 블로그, url: /ko/blog/ }
+        - { title: 프로젝트, url: /ko/projects/ }
+    - title: 더 보기
+      links:
+        - { title: 테마 소개, url: /ko/about/ }
+        - { title: RSS 피드, url: /ko/feed.xml }
+  ja:
+    - title: サイト
+      links:
+        - { title: ホーム, url: /ja/ }
+        - { title: ブログ, url: /ja/blog/ }
+        - { title: プロジェクト, url: /ja/projects/ }
+    - title: その他
+      links:
+        - { title: テーマについて, url: /ja/about/ }
+        - { title: RSSフィード, url: /ja/feed.xml }
+  zh:
+    - title: 网站
+      links:
+        - { title: 首页, url: /zh/ }
+        - { title: 博客, url: /zh/blog/ }
+        - { title: 项目, url: /zh/projects/ }
+    - title: 更多
+      links:
+        - { title: 关于主题, url: /zh/about/ }
+        - { title: RSS 订阅, url: /zh/feed.xml }

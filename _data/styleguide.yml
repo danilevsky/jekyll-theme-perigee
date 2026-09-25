@@ -1,0 +1,5 @@
+tabs:
+  - label: Ruby
+    content: "<pre><code>puts \"Hello, Perigee!\"</code></pre>"
+  - label: JavaScript
+    content: "<pre><code>console.log(\"Hello, Perigee!\");</code></pre>"

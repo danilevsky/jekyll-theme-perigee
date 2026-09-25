@@ -1,0 +1,5 @@
+{%- comment -%}Sets pg_lang, pg_i18n and pg_i18n_default for the current page (or include.lang).{%- endcomment -%}
+{%- assign pg_lang = include.lang | default: page.lang | default: site.default_lang | default: "en" -%}
+{%- assign pg_default_lang = site.default_lang | default: "en" -%}
+{%- assign pg_i18n = site.data.i18n[pg_lang] -%}
+{%- assign pg_i18n_default = site.data.i18n[pg_default_lang] -%}

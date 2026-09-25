@@ -1,0 +1,12 @@
+.pg-icon {
+  display: inline-flex;
+  flex: none;
+  width: var(--pg-icon-size, 16px);
+  height: var(--pg-icon-size, 16px);
+  vertical-align: middle;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}

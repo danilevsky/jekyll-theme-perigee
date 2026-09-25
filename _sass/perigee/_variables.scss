@@ -1,0 +1,15 @@
+:root {
+  --pg-container-width: 1232px;
+  --pg-gutter: 24px;
+  --pg-header-height: 64px;
+  --pg-prose-width: 760px;
+  --pg-radius-card: 16px;
+  --pg-transition: 0.15s ease;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --pg-gutter: 16px;
+    --pg-header-height: 56px;
+  }
+}

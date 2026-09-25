@@ -1,0 +1,6 @@
+{%- comment -%}Usage: {% include t.html key="read_more" %} or {% include t.html key="min_read" n=5 %}{%- endcomment -%}
+{%- include lang.html lang=include.lang -%}
+{%- assign pg_t = pg_i18n[include.key] | default: pg_i18n_default[include.key] | default: include.key -%}
+{%- if include.n -%}{%- assign pg_t = pg_t | replace: "%{n}", include.n -%}{%- endif -%}
+{%- if include.tag -%}{%- assign pg_t = pg_t | replace: "%{tag}", include.tag -%}{%- endif -%}
+{{- pg_t -}}

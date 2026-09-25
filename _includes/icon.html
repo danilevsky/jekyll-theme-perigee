@@ -1,0 +1,2 @@
+{%- comment -%}Usage: {% include icon.html name="sun" px=20 %}. Add icons as _includes/icons/<name>.svg.{%- endcomment -%}
+<span class="pg-icon{% if include.class %} {{ include.class }}{% endif %}"{% if include.px %} style="--pg-icon-size: {{ include.px }}px"{% endif %}>{% include icons/{{ include.name }}.svg %}</span>

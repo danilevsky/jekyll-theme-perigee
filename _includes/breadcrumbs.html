@@ -1,0 +1,10 @@
+{%- comment -%}Usage: {% include breadcrumbs.html parent_title=x parent_url=x title=page.title %}. parent_* is optional.{%- endcomment -%}
+<nav aria-label="Breadcrumb">
+  <ol class="pg-breadcrumbs">
+    <li><a href="{% include lang-home.html lang=page.lang %}">{% include icon.html name="house" px=14 %}<span class="pg-visually-hidden">{% include t.html key="home" %}</span></a></li>
+    {%- if include.parent_title %}
+    <li>{% include icon.html name="chevron-right" %}<a href="{{ include.parent_url | relative_url }}">{{ include.parent_title }}</a></li>
+    {%- endif %}
+    <li>{% include icon.html name="chevron-right" %}<span aria-current="page">{{ include.title }}</span></li>
+  </ol>
+</nav>

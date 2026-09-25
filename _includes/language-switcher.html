@@ -1,0 +1,24 @@
+{%- comment -%}Links to the translation of the current page, or to the other language's home page.{%- endcomment -%}
+{%- if site.languages.size > 1 -%}
+<details class="pg-dropdown pg-lang" data-pg-dropdown>
+  <summary class="pg-button pg-button_view_flat" aria-label="{% include t.html key='language' %}">
+    {% include icon.html name="globe" %}<span>{{ pg_lang | upcase }}</span>
+  </summary>
+  <ul class="pg-dropdown__menu" role="list">
+    {%- for pg_l in site.languages -%}
+      {%- assign pg_target = nil -%}
+      {%- for pg_tr in pg_translations -%}
+        {%- assign pg_tr_lang = pg_tr.lang | default: pg_default_lang -%}
+        {%- if pg_tr_lang == pg_l -%}{%- assign pg_target = pg_tr.url | relative_url -%}{%- endif -%}
+      {%- endfor -%}
+      {%- unless pg_target -%}{%- capture pg_target -%}{% include lang-home.html lang=pg_l %}{%- endcapture -%}{%- endunless %}
+    <li>
+      <a class="pg-dropdown__item" href="{{ pg_target }}" hreflang="{{ pg_l }}" lang="{{ pg_l }}"{% if pg_l == pg_lang %} aria-current="true"{% endif %}>
+        {{- site.data.i18n[pg_l].lang_name | default: pg_l -}}
+        {%- if pg_l == pg_lang %}{% include icon.html name="check" %}{% endif -%}
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</details>
+{%- endif -%}

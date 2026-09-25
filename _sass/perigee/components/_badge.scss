@@ -1,0 +1,19 @@
+.pg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--g-spacing-1);
+  height: 20px;
+  padding-inline: var(--g-spacing-2);
+  border-radius: var(--g-border-radius-xs);
+  background: var(--g-color-base-generic);
+  color: var(--g-color-text-secondary);
+  font: var(--g-text-caption-2-font);
+  font-weight: var(--g-text-accent-font-weight);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.pg-badge_view_brand {
+  background: var(--g-color-base-info-light);
+  color: var(--g-color-text-info);
+}

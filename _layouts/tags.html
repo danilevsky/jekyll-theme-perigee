@@ -1,0 +1,40 @@
+---
+layout: default
+---
+{%- assign pg_t_lang = page.lang | default: site.default_lang -%}
+{%- assign pg_t_posts = site.posts | where: "lang", pg_t_lang -%}
+{%- assign pg_t_all = "" | split: "" -%}
+{%- for pg_post in pg_t_posts -%}
+  {%- assign pg_t_all = pg_t_all | concat: pg_post.tags -%}
+{%- endfor -%}
+{%- assign pg_t_tags = pg_t_all | uniq | sort -%}
+<div class="pg-container pg-page">
+  <header class="pg-page__header">
+    <h1 class="pg-page__title">{{ page.title }}</h1>
+  </header>
+
+  {%- if pg_t_tags.size > 0 %}
+  <ul class="pg-tag-cloud" role="list">
+    {%- for pg_tag in pg_t_tags %}
+    <li><a class="pg-label" href="#{{ pg_tag | slugify }}">{{ pg_tag }}</a></li>
+    {%- endfor %}
+  </ul>
+
+  {%- for pg_tag in pg_t_tags %}
+  {%- assign pg_tag_posts = pg_t_posts | where_exp: "post", "post.tags contains pg_tag" -%}
+  <div class="pg-tag-section" id="{{ pg_tag | slugify }}">
+    <h2 class="pg-tag-section__title">{% include icon.html name="tag" px=16 %}{{ pg_tag }}</h2>
+    <ul class="pg-archive__list">
+      {%- for pg_post in pg_tag_posts %}
+      <li class="pg-archive__item">
+        <span class="pg-archive__date">{% include date.html date=pg_post.date %}</span>
+        <a class="pg-archive__title" href="{{ pg_post.url | relative_url }}">{{ pg_post.title }}</a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endfor %}
+  {%- else %}
+  <p>{% include t.html key="no_items" lang=pg_t_lang %}</p>
+  {%- endif %}
+</div>

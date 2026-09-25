@@ -1,0 +1,5 @@
+{%- comment -%}Sets pg_translations: all pages and documents sharing page.translation_key (including this one).{%- endcomment -%}
+{%- assign pg_translations = "" | split: "" -%}
+{%- if page.translation_key -%}
+  {%- assign pg_translations = site.pages | concat: site.documents | where: "translation_key", page.translation_key -%}
+{%- endif -%}

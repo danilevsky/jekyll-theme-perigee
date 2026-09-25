@@ -1,0 +1,40 @@
+# UI strings for German. Override any key in your site's _data/i18n/de.yml.
+lang_name: Deutsch
+locale: de_DE
+dir: ltr
+
+date_format: "%d. %m %y"
+months: [Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+
+skip_to_content: Zum Inhalt springen
+nav_main: Hauptnavigation
+menu_open: Menü öffnen
+menu_close: Menü schließen
+language: Sprache
+theme: Thema
+theme_system: Systemthema
+theme_light: Helles Thema
+theme_dark: Dunkles Thema
+home: Startseite
+blog: Blog
+read_more: Weiterlesen
+all_posts: Alle Beiträge
+min_read: "%{n} Min. Lesezeit"
+published: Veröffentlicht
+updated: Aktualisiert
+tags: Tags
+not_found_title: Seite nicht gefunden
+not_found_text: Die gesuchte Seite existiert nicht oder wurde verschoben.
+back_home: Zurück zur Startseite
+translation_available: Diese Seite ist auch auf Deutsch verfügbar
+toc: Inhalt
+copy_code: Kopieren
+copy_code_done: Kopiert
+previous_post: Zurück
+next_post: Weiter
+related_posts: Ähnliche Beiträge
+archive: Archiv
+all_tags: Alle Tags
+tagged_with: "Markiert mit „%{tag}“"
+no_items: Hier ist noch nichts.
+projects: Projekte

@@ -1,0 +1,20 @@
+{%- comment -%}Section type "features": items array of {icon, title, text}.{%- endcomment -%}
+<section class="pg-section pg-container">
+  {%- if include.section.title %}
+  <div class="pg-section__header">
+    <div>
+      <h2 class="pg-section__title">{{ include.section.title }}</h2>
+      {%- if include.section.text %}<p class="pg-section__text">{{ include.section.text }}</p>{% endif -%}
+    </div>
+  </div>
+  {%- endif %}
+  <div class="pg-features">
+    {%- for pg_item in include.section.items %}
+    <div class="pg-feature">
+      {%- if pg_item.icon %}<span class="pg-feature__icon">{% include icon.html name=pg_item.icon px=20 %}</span>{% endif -%}
+      <h3 class="pg-feature__title">{{ pg_item.title }}</h3>
+      <p class="pg-feature__text">{{ pg_item.text }}</p>
+    </div>
+    {%- endfor %}
+  </div>
+</section>

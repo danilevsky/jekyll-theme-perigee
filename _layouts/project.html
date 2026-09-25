@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{%- comment -%}For the "projects" collection convention, see _layouts/projects.html.{%- endcomment -%}
+{%- assign pg_p_lang = page.lang | default: site.default_lang -%}
+{%- capture pg_p_projects_url %}{% include lang-home.html lang=pg_p_lang %}projects/{% endcapture -%}
+{%- capture pg_p_projects_label %}{% include t.html key="projects" lang=pg_p_lang %}{% endcapture -%}
+<article class="pg-container pg-page">
+  {% include breadcrumbs.html parent_title=pg_p_projects_label parent_url=pg_p_projects_url title=page.title %}
+  <header class="pg-page__header">
+    <h1 class="pg-page__title">{{ page.title }}</h1>
+    {%- if page.lead %}<p class="pg-page__lead">{{ page.lead }}</p>{% endif %}
+    {%- if page.tags.size > 0 %}
+    <ul class="pg-post__tags" role="list" aria-label="{% include t.html key='tags' lang=pg_p_lang %}">
+      {%- for pg_tag in page.tags %}<li class="pg-label">{{ pg_tag }}</li>{% endfor %}
+    </ul>
+    {%- endif %}
+  </header>
+  {%- if page.image %}<img class="pg-project__cover" src="{{ page.image | relative_url }}" alt="">{% endif %}
+  <div class="pg-prose">
+    {{ content }}
+  </div>
+</article>

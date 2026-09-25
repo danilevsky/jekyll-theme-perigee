@@ -1,0 +1,7 @@
+{%- comment -%}Outputs the home URL for include.lang (default language lives at the site root).{%- endcomment -%}
+{%- assign pg_default_lang = site.default_lang | default: "en" -%}
+{%- if include.lang == pg_default_lang -%}
+  {{- "/" | relative_url -}}
+{%- else -%}
+  {{- "/" | append: include.lang | append: "/" | relative_url -}}
+{%- endif -%}

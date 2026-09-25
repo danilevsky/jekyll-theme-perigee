@@ -1,0 +1,107 @@
+---
+layout: default
+---
+{%- assign pg_p_lang = page.lang | default: site.default_lang -%}
+{%- assign pg_minutes = content | strip_html | number_of_words | divided_by: 200 | at_least: 1 -%}
+{%- capture pg_p_blog_url %}{% include lang-home.html lang=pg_p_lang %}blog/{% endcapture -%}
+{%- capture pg_p_blog_label %}{% include t.html key="blog" lang=pg_p_lang %}{% endcapture -%}
+
+{%- assign pg_lang_posts = site.posts | where: "lang", pg_p_lang -%}
+{%- assign pg_index = 0 -%}
+{%- for pg_p in pg_lang_posts -%}
+  {%- if pg_p.url == page.url -%}{%- assign pg_index = forloop.index0 -%}{%- endif -%}
+{%- endfor -%}
+{%- assign pg_prev_i = pg_index | plus: 1 -%}
+{%- assign pg_next_i = pg_index | minus: 1 -%}
+{%- assign pg_prev = pg_lang_posts[pg_prev_i] -%}
+{%- assign pg_next = nil -%}
+{%- if pg_next_i >= 0 -%}{%- assign pg_next = pg_lang_posts[pg_next_i] -%}{%- endif -%}
+
+{%- assign pg_related = "" | split: "" -%}
+{%- for pg_tag in page.tags -%}
+  {%- assign pg_related = pg_related | concat: site.tags[pg_tag] -%}
+{%- endfor -%}
+{%- assign pg_related = pg_related | where: "lang", pg_p_lang | where_exp: "post", "post.url != page.url" | uniq -%}
+
+<article class="pg-container pg-page pg-post">
+  {% include breadcrumbs.html parent_title=pg_p_blog_label parent_url=pg_p_blog_url title=page.title %}
+  <header class="pg-page__header">
+    <h1 class="pg-page__title">{{ page.title }}</h1>
+    <p class="pg-post__meta">
+      {% include icon.html name="calendar" %}{% include date.html date=page.date %}
+      {%- if page.updated %}
+      <span aria-hidden="true">·</span>
+      <span>{% include t.html key="updated" lang=pg_p_lang %} {% include date.html date=page.updated %}</span>
+      {%- endif %}
+      <span aria-hidden="true">·</span>
+      {% include icon.html name="clock" %}<span>{% include t.html key="min_read" n=pg_minutes lang=pg_p_lang %}</span>
+      {%- if page.author %}
+      <span aria-hidden="true">·</span>
+      <span>{{ page.author }}</span>
+      {%- endif %}
+    </p>
+  </header>
+
+  {%- if page.image %}<img class="pg-project__cover" src="{{ page.image | relative_url }}" alt="">{% endif %}
+
+  <div class="pg-prose">
+    {{ content }}
+  </div>
+
+  {%- if page.tags.size > 0 %}
+  <footer class="pg-post__footer">
+    <ul class="pg-post__tags" role="list" aria-label="{% include t.html key='tags' lang=pg_p_lang %}">
+      {%- for pg_tag in page.tags %}<li class="pg-label">{{ pg_tag }}</li>{% endfor %}
+    </ul>
+  </footer>
+  {%- endif %}
+
+  {%- if pg_prev or pg_next %}
+  <nav class="pg-pagination" aria-label="{% include t.html key='blog' lang=pg_p_lang %}">
+    <div class="pg-pagination__side">
+      {%- if pg_prev %}
+      <a class="pg-pagination__link" href="{{ pg_prev.url | relative_url }}">
+        <span class="pg-pagination__label">{% include icon.html name="arrow-left" %}{% include t.html key="previous_post" lang=pg_p_lang %}</span>
+        <span class="pg-pagination__title">{{ pg_prev.title }}</span>
+      </a>
+      {%- endif %}
+    </div>
+    <div class="pg-pagination__side pg-pagination__side_end">
+      {%- if pg_next %}
+      <a class="pg-pagination__link" href="{{ pg_next.url | relative_url }}">
+        <span class="pg-pagination__label">{% include t.html key="next_post" lang=pg_p_lang %}{% include icon.html name="arrow-right" %}</span>
+        <span class="pg-pagination__title">{{ pg_next.title }}</span>
+      </a>
+      {%- endif %}
+    </div>
+  </nav>
+  {%- endif %}
+
+  {%- if pg_related.size > 0 %}
+  <div class="pg-related">
+    <h2 class="pg-related__title">{% include t.html key="related_posts" lang=pg_p_lang %}</h2>
+    <div class="pg-grid pg-grid_cols_3">
+      {%- for pg_post in pg_related limit: 3 %}
+      {% include card.html title=pg_post.title text=pg_post.excerpt url=pg_post.url tags=pg_post.tags %}
+      {%- endfor %}
+    </div>
+  </div>
+  {%- endif %}
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ page.title | jsonify }},
+  "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+  {%- if page.updated %}
+  "dateModified": {{ page.updated | date_to_xmlschema | jsonify }},
+  {%- endif %}
+  "url": {{ page.url | absolute_url | jsonify }},
+  "inLanguage": {{ pg_p_lang | jsonify }}
+  {%- if page.author %},
+  "author": { "@type": "Person", "name": {{ page.author | jsonify }} }
+  {%- endif %}
+}
+</script>

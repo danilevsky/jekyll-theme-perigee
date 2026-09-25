@@ -1,0 +1,47 @@
+{%- assign pg_nav = site.data.navigation[pg_lang] | default: site.data.navigation[pg_default_lang] -%}
+<a class="pg-skip-link" href="#main">{% include t.html key="skip_to_content" %}</a>
+<header class="pg-header" data-pg-header>
+  <div class="pg-container pg-header__inner">
+    <a class="pg-header__logo" href="{% include lang-home.html lang=pg_lang %}">
+      {%- if site.perigee.logo -%}
+        <img src="{{ site.perigee.logo | relative_url }}" alt="" height="28">
+      {%- endif -%}
+      <span>{{ site.perigee.logo_text | default: pg_site_title }}</span>
+    </a>
+
+    {%- if pg_nav %}
+    <nav class="pg-header__nav" id="pg-nav" aria-label="{% include t.html key='nav_main' %}">
+      <ul role="list">
+        {%- for pg_item in pg_nav -%}
+          {%- assign pg_href = pg_item.url -%}
+          {%- if pg_href contains "://" -%}{%- else -%}{%- assign pg_href = pg_item.url | relative_url -%}{%- endif -%}
+          {%- assign pg_active = false -%}
+          {%- if page.url == pg_item.url -%}
+            {%- assign pg_active = true -%}
+          {%- elsif pg_item.url != "/" and pg_item.url.size > 1 -%}
+            {%- assign pg_prefix = page.url | slice: 0, pg_item.url.size -%}
+            {%- if pg_prefix == pg_item.url and pg_item.exact != true -%}{%- assign pg_active = true -%}{%- endif -%}
+          {%- endif %}
+        <li><a class="pg-header__link" href="{{ pg_href }}"{% if pg_active %} aria-current="page"{% endif %}>{{ pg_item.title }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    {%- endif %}
+
+    <div class="pg-header__actions">
+      {%- for pg_social in site.perigee.social %}
+      <a class="pg-button pg-button_view_flat pg-button_icon pg-header__social" href="{{ pg_social.url }}" aria-label="{{ pg_social.label }}" rel="me noopener" target="_blank">{% include icon.html name=pg_social.icon %}</a>
+      {%- endfor %}
+      {% include language-switcher.html %}
+      {% include theme-switcher.html %}
+      {%- if pg_nav %}
+      <button type="button" class="pg-button pg-button_view_flat pg-button_icon pg-header__menu-toggle" aria-controls="pg-nav" aria-expanded="false"
+        data-pg-menu-toggle data-label-open="{% include t.html key='menu_open' %}" data-label-close="{% include t.html key='menu_close' %}"
+        aria-label="{% include t.html key='menu_open' %}">
+        {% include icon.html name="bars" class="pg-header__menu-icon-open" %}
+        {% include icon.html name="xmark" class="pg-header__menu-icon-close" %}
+      </button>
+      {%- endif %}
+    </div>
+  </div>
+</header>

@@ -1,0 +1,78 @@
+// Mirrors Gravity UI Button: views (normal, action, outlined, flat) and sizes (m, l, xl).
+.pg-button {
+  --_height: 36px;
+  --_padding: 12px;
+  --_radius: var(--g-border-radius-l);
+  --_bg: var(--g-color-base-generic);
+  --_bg-hover: var(--g-color-base-generic-hover);
+  --_color: var(--g-color-text-primary);
+  --_border: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--g-spacing-2);
+  height: var(--_height);
+  padding-inline: var(--_padding);
+  border: 1px solid var(--_border);
+  border-radius: var(--_radius);
+  background: var(--_bg);
+  color: var(--_color);
+  font: var(--g-text-body-1-font);
+  font-size: var(--g-text-body-2-font-size);
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--pg-transition), color var(--pg-transition), transform 0.1s ease;
+
+  &:hover {
+    background: var(--_bg-hover);
+    color: var(--_color);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &_size_m {
+    --_height: 28px;
+    --_padding: 10px;
+    --_radius: var(--g-border-radius-m);
+    font-size: var(--g-text-body-1-font-size);
+  }
+
+  &_size_xl {
+    --_height: 44px;
+    --_padding: 20px;
+    --_radius: var(--g-border-radius-xl);
+    font-size: var(--g-text-body-3-font-size);
+  }
+
+  &_view_action {
+    --_bg: var(--g-color-base-brand);
+    --_bg-hover: var(--g-color-base-brand-hover);
+    --_color: var(--g-color-text-brand-contrast);
+  }
+
+  &_view_outlined {
+    --_bg: transparent;
+    --_bg-hover: var(--g-color-base-simple-hover);
+    --_border: var(--g-color-line-generic);
+  }
+
+  &_view_flat {
+    --_bg: transparent;
+    --_bg-hover: var(--g-color-base-simple-hover);
+    --_color: var(--g-color-text-complementary);
+
+    &:hover {
+      --_color: var(--g-color-text-primary);
+    }
+  }
+
+  &_icon {
+    width: var(--_height);
+    padding: 0;
+  }
+}

@@ -1,0 +1,11 @@
+.pg-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--g-spacing-1);
+  height: 24px;
+  padding-inline: var(--g-spacing-2);
+  border-radius: var(--g-border-radius-m);
+  background: var(--g-color-base-generic);
+  color: var(--g-color-text-complementary);
+  font: var(--g-text-body-1-font);
+}

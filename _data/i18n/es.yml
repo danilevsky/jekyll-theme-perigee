@@ -1,0 +1,40 @@
+# UI strings for Spanish. Override any key in your site's _data/i18n/es.yml.
+lang_name: Español
+locale: es_ES
+dir: ltr
+
+date_format: "%d de %m de %y"
+months: [enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre]
+
+skip_to_content: Saltar al contenido
+nav_main: Navegación principal
+menu_open: Abrir menú
+menu_close: Cerrar menú
+language: Idioma
+theme: Tema
+theme_system: Tema del sistema
+theme_light: Tema claro
+theme_dark: Tema oscuro
+home: Inicio
+blog: Blog
+read_more: Leer más
+all_posts: Todas las entradas
+min_read: "%{n} min de lectura"
+published: Publicado
+updated: Actualizado
+tags: Etiquetas
+not_found_title: Página no encontrada
+not_found_text: La página que buscas no existe o ha sido movida.
+back_home: Volver al inicio
+translation_available: Esta página también está disponible en español
+toc: Contenido
+copy_code: Copiar
+copy_code_done: Copiado
+previous_post: Anterior
+next_post: Siguiente
+related_posts: Entradas relacionadas
+archive: Archivo
+all_tags: Todas las etiquetas
+tagged_with: "Etiquetado «%{tag}»"
+no_items: Todavía no hay nada aquí.
+projects: Proyectos

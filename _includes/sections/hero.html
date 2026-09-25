@@ -1,0 +1,17 @@
+{%- comment -%}Section type "hero": title, text, badges (array of strings), actions (array of {title, url, view}).{%- endcomment -%}
+<section class="pg-hero pg-container">
+  <h1 class="pg-hero__title">{{ include.section.title }}</h1>
+  {%- if include.section.text %}<p class="pg-hero__text">{{ include.section.text }}</p>{% endif -%}
+  {%- if include.section.badges %}
+  <ul class="pg-hero__badges" role="list">
+    {%- for pg_badge in include.section.badges %}<li class="pg-badge">{{ pg_badge }}</li>{% endfor %}
+  </ul>
+  {%- endif -%}
+  {%- if include.section.actions %}
+  <div class="pg-hero__actions">
+    {%- for pg_action in include.section.actions %}
+    <a class="pg-button pg-button_size_xl pg-button_view_{{ pg_action.view | default: 'action' }}" href="{{ pg_action.url | relative_url }}">{{ pg_action.title }}</a>
+    {%- endfor %}
+  </div>
+  {%- endif -%}
+</section>

@@ -1,0 +1,18 @@
+{%- include lang.html -%}
+{%- include translations.html -%}
+<!doctype html>
+<html lang="{{ pg_lang }}" dir="{{ pg_i18n.dir | default: 'ltr' }}">
+<head>
+{% include head.html %}
+</head>
+<body class="pg-body"
+  data-pg-toc-label="{% include t.html key='toc' %}"
+  data-pg-copy-label="{% include t.html key='copy_code' %}"
+  data-pg-copy-done-label="{% include t.html key='copy_code_done' %}">
+{% include header.html %}
+<main id="main" class="pg-main">
+{{ content }}
+</main>
+{% include footer.html %}
+</body>
+</html>

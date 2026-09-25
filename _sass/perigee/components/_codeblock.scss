@@ -1,0 +1,40 @@
+.pg-prose pre {
+  position: relative;
+}
+
+.pg-code-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--g-spacing-2);
+  margin-bottom: var(--g-spacing-2);
+}
+
+.pg-code-lang {
+  color: var(--g-color-text-hint);
+  font: var(--g-text-caption-2-font);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.pg-code-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--g-spacing-1);
+  padding: var(--g-spacing-1) var(--g-spacing-2);
+  border: 0;
+  border-radius: var(--g-border-radius-m);
+  background: transparent;
+  color: var(--g-color-text-secondary);
+  font: var(--g-text-caption-2-font);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--g-color-base-simple-hover);
+    color: var(--g-color-text-primary);
+  }
+
+  &[data-copied="true"] {
+    color: var(--g-color-text-positive);
+  }
+}

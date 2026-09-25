@@ -1,0 +1,29 @@
+{%- assign pg_footer_cols = site.data.navigation.footer[pg_lang] | default: site.data.navigation.footer[pg_default_lang] -%}
+<footer class="pg-footer">
+  <div class="pg-container">
+    {%- if pg_footer_cols %}
+    <nav class="pg-footer__nav" aria-label="{% include t.html key='nav_main' %}">
+      {%- for pg_col in pg_footer_cols %}
+      <div class="pg-footer__col">
+        <p class="pg-footer__col-title">{{ pg_col.title }}</p>
+        <ul role="list">
+          {%- for pg_link in pg_col.links %}
+          <li><a href="{{ pg_link.url | relative_url }}">{{ pg_link.title }}</a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endfor %}
+    </nav>
+    {%- endif %}
+    <div class="pg-footer__bottom">
+      <p class="pg-footer__copy">© {{ site.time | date: "%Y" }} {{ site.perigee.copyright | default: pg_site_title }}</p>
+      {%- if site.perigee.social %}
+      <ul class="pg-footer__social" role="list">
+        {%- for pg_social in site.perigee.social %}
+        <li><a href="{{ pg_social.url }}" rel="me noopener" target="_blank">{% include icon.html name=pg_social.icon %}<span>{{ pg_social.label }}</span></a></li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </div>
+  </div>
+</footer>

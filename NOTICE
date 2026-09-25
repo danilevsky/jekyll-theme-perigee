@@ -1,0 +1,16 @@
+Perigee is an independent project. It is inspired by, but not affiliated with
+or endorsed by, the Gravity UI team or YANDEX LLC.
+
+This theme includes third-party material:
+
+- Design tokens (_sass/perigee/tokens/) derived from @gravity-ui/uikit
+  Copyright (c) 2021 YANDEX LLC, MIT License
+  https://github.com/gravity-ui/uikit
+
+- Icons (_includes/icons/) from @gravity-ui/icons
+  Copyright (c) 2022 YANDEX LLC, MIT License (see _includes/icons/LICENSE)
+  https://github.com/gravity-ui/icons
+
+- Inter typeface (assets/fonts/inter/) by The Inter Project Authors
+  SIL Open Font License 1.1 (see assets/fonts/inter/LICENSE.txt)
+  https://github.com/rsms/inter

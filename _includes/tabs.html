@@ -1,0 +1,21 @@
+{%- comment -%}
+Usage:
+{% include tabs.html id="install" view="segmented" tabs=list %}
+`list` is an array of {label, content} (content is pre-rendered HTML/Markdown-output).
+{%- endcomment -%}
+<div class="pg-tabs{% if include.view %} pg-tabs_view_{{ include.view }}{% endif %}" data-pg-tabs>
+  <div class="pg-tabs__list" role="tablist">
+    {%- for pg_tab in include.tabs %}
+    <button type="button" class="pg-tabs__tab" role="tab" id="{{ include.id }}-tab-{{ forloop.index0 }}"
+      aria-controls="{{ include.id }}-panel-{{ forloop.index0 }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+      {{- pg_tab.label -}}
+    </button>
+    {%- endfor %}
+  </div>
+  {%- for pg_tab in include.tabs %}
+  <div class="pg-tabs__panel" role="tabpanel" id="{{ include.id }}-panel-{{ forloop.index0 }}"
+    aria-labelledby="{{ include.id }}-tab-{{ forloop.index0 }}" data-pg-tab-label="{{ pg_tab.label }}"{% unless forloop.first %} hidden{% endunless %}>
+    {{ pg_tab.content }}
+  </div>
+  {%- endfor %}
+</div>

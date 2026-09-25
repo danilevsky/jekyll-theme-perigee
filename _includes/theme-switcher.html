@@ -1,0 +1,9 @@
+<button type="button" class="pg-button pg-button_view_flat pg-button_icon pg-theme-switch" data-pg-theme-switch
+  data-label-system="{% include t.html key='theme_system' %}"
+  data-label-light="{% include t.html key='theme_light' %}"
+  data-label-dark="{% include t.html key='theme_dark' %}"
+  aria-label="{% include t.html key='theme' %}">
+  {% include icon.html name="display" class="pg-theme-switch__icon pg-theme-switch__icon_system" %}
+  {% include icon.html name="sun" class="pg-theme-switch__icon pg-theme-switch__icon_light" %}
+  {% include icon.html name="moon" class="pg-theme-switch__icon pg-theme-switch__icon_dark" %}
+</button>

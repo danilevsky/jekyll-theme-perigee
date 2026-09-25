@@ -1,0 +1,6 @@
+---
+layout: default
+---
+{%- for pg_section in page.sections -%}
+{% include sections/{{ pg_section.type }}.html section=pg_section %}
+{%- endfor -%}
