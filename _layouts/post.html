@@ -3,7 +3,8 @@ layout: default
 ---
 {%- assign pg_p_lang = page.lang | default: site.default_lang -%}
 {%- assign pg_minutes = content | strip_html | number_of_words | divided_by: 200 | at_least: 1 -%}
-{%- capture pg_p_blog_url %}{% include lang-home.html lang=pg_p_lang %}blog/{% endcapture -%}
+{%- comment -%}raw=true: breadcrumbs.html applies relative_url to parent_url itself.{%- endcomment -%}
+{%- capture pg_p_blog_url %}{% include lang-home.html lang=pg_p_lang raw=true %}blog/{% endcapture -%}
 {%- capture pg_p_blog_label %}{% include t.html key="blog" lang=pg_p_lang %}{% endcapture -%}
 
 {%- assign pg_lang_posts = site.posts | where: "lang", pg_p_lang -%}

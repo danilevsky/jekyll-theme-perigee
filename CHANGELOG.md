@@ -29,3 +29,6 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - The palette's glow no longer causes horizontal scrolling on viewports narrower than ~1280px.
 - Project badges now show on home-page `cards` sections, not only on `/projects/`.
 - Image `alt` text is HTML-escaped, so quotes in `image_alt` no longer break the markup.
+- Breadcrumb links on post and project pages no longer double the `baseurl` (broken on GitHub Pages
+  project sites such as `/jekyll-theme-perigee/`).
+- CI: htmlproofer now accounts for the Pages `baseurl` instead of reporting every internal link as missing.

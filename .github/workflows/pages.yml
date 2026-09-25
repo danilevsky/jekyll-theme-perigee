@@ -30,7 +30,12 @@ jobs:
         env:
           JEKYLL_ENV: production
       - run: gem build jekyll-theme-perigee.gemspec
-      - run: bundle exec htmlproofer _site --disable-external --checks Links,Images,Scripts
+      # The site is built with --baseurl (e.g. /jekyll-theme-perigee), but files sit at the root of _site/,
+      # so strip the prefix before htmlproofer resolves internal URLs to files. With an empty base path
+      # (custom domain) the pattern becomes "^/:/", which changes nothing.
+      - run: >-
+          bundle exec htmlproofer _site --disable-external --checks Links,Images,Scripts
+          --swap-urls "^${{ steps.pages.outputs.base_path }}/:/"
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
 

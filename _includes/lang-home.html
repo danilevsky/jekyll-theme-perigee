@@ -1,7 +1,12 @@
-{%- comment -%}Outputs the home URL for include.lang (default language lives at the site root).{%- endcomment -%}
+{%- comment -%}
+Outputs the home URL for include.lang (default language lives at the site root), with baseurl applied.
+Pass raw=true to get the bare path ("/" or "/ru/") instead — for values that are handed to something
+that applies relative_url itself (e.g. breadcrumbs.html's parent_url), or baseurl ends up doubled.
+{%- endcomment -%}
 {%- assign pg_default_lang = site.default_lang | default: "en" -%}
 {%- if include.lang == pg_default_lang -%}
-  {{- "/" | relative_url -}}
+  {%- assign pg_lh_path = "/" -%}
 {%- else -%}
-  {{- "/" | append: include.lang | append: "/" | relative_url -}}
+  {%- assign pg_lh_path = "/" | append: include.lang | append: "/" -%}
 {%- endif -%}
+{%- if include.raw -%}{{- pg_lh_path -}}{%- else -%}{{- pg_lh_path | relative_url -}}{%- endif -%}
