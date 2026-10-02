@@ -115,6 +115,8 @@ defaults:
 
 exclude:
   - scripts/
+  - starter/
+  - starter-multilang/
   - package.json
   - package-lock.json
   - "*.gemspec"

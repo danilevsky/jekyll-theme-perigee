@@ -1,0 +1,9 @@
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.3"
+# Perigee isn't on RubyGems; it's installed straight from GitHub.
+# Pin to a release with `tag: "v0.1.0"` once one exists.
+gem "jekyll-theme-perigee", git: "https://github.com/danilevsky/jekyll-theme-perigee", branch: "main"
+
+gem "webrick"                                  # needed by `jekyll serve` on Ruby 3+
+gem "tzinfo-data", platforms: [:windows, :jruby]

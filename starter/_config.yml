@@ -1,0 +1,43 @@
+title: My Site
+description: A short description of what this site is about.
+url: ""        # https://example.com (no trailing slash); for GitHub Pages project sites also set baseurl
+baseurl: ""    # e.g. /my-repo
+
+theme: jekyll-theme-perigee
+
+# default_lang is served from /, the others from /<lang>/.
+# To add Russian: languages: [en, ru], create ru/index.md, ru/blog/, ru/_posts/, and uncomment
+# the ru entries under `defaults` and in _data/navigation.yml. 9 UI languages ship with the theme.
+languages: [en]
+default_lang: en
+
+perigee:
+  logo_text: My Site
+  copyright: Your Name
+  # palette: warm            # optional alternative palette
+  social:
+    - icon: logo-github
+      url: https://github.com/your-name
+      label: GitHub
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /blog/:title/
+
+defaults:
+  - scope: { path: "" }
+    values: { layout: page, lang: en }
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  # - scope: { path: "ru" }
+  #   values: { lang: ru }
+  # - scope: { path: "ru", type: posts }
+  #   values: { lang: ru, permalink: /ru/blog/:title/ }
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

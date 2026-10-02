@@ -1,0 +1,72 @@
+title: My Site
+description: A short description of what this site is about.
+url: ""        # https://example.com (no trailing slash); for GitHub Pages project sites also set baseurl
+baseurl: ""    # e.g. /my-repo
+
+theme: jekyll-theme-perigee
+
+# default_lang is served from /, the others from /<lang>/ (en at /, ru at /ru/, es at /es/ ...).
+# Order in `languages` is the order in the language switcher.
+# This starter includes all 9 languages Perigee ships UI strings for. To drop one: remove it from
+# `languages`, delete its folder, and remove its `defaults` pair and _data/navigation.yml entries.
+languages: [en, ru, es, fr, de, pt, ko, ja, zh]
+default_lang: en
+
+perigee:
+  logo_text: My Site
+  copyright: Your Name
+  # palette: warm            # optional alternative palette
+  social:
+    - icon: logo-github
+      url: https://github.com/your-name
+      label: GitHub
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /blog/:title/
+
+defaults:
+  - scope: { path: "" }
+    values: { layout: page, lang: en }
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "ru" }
+    values: { lang: ru }
+  - scope: { path: "ru", type: posts }
+    values: { lang: ru, permalink: /ru/blog/:title/ }
+  - scope: { path: "es" }
+    values: { lang: es }
+  - scope: { path: "es", type: posts }
+    values: { lang: es, permalink: /es/blog/:title/ }
+  - scope: { path: "fr" }
+    values: { lang: fr }
+  - scope: { path: "fr", type: posts }
+    values: { lang: fr, permalink: /fr/blog/:title/ }
+  - scope: { path: "de" }
+    values: { lang: de }
+  - scope: { path: "de", type: posts }
+    values: { lang: de, permalink: /de/blog/:title/ }
+  - scope: { path: "pt" }
+    values: { lang: pt }
+  - scope: { path: "pt", type: posts }
+    values: { lang: pt, permalink: /pt/blog/:title/ }
+  - scope: { path: "ko" }
+    values: { lang: ko }
+  - scope: { path: "ko", type: posts }
+    values: { lang: ko, permalink: /ko/blog/:title/ }
+  - scope: { path: "ja" }
+    values: { lang: ja }
+  - scope: { path: "ja", type: posts }
+    values: { lang: ja, permalink: /ja/blog/:title/ }
+  - scope: { path: "zh" }
+    values: { lang: zh }
+  - scope: { path: "zh", type: posts }
+    values: { lang: zh, permalink: /zh/blog/:title/ }
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

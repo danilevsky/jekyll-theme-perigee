@@ -15,6 +15,75 @@ A multilingual Jekyll theme for blogs and portfolios, inspired by the [Gravity U
 Live demo: once GitHub Pages is enabled for this repo (Settings → Pages → Source: GitHub Actions), it's published
 at `https://danilevsky.github.io/jekyll-theme-perigee/` (English and Russian); browse `/styleguide/` there for every component.
 
+## Quick start
+
+The fastest way to a new site is a **starter**: a complete, ready-to-run site that already uses Perigee. Pick one:
+
+| Starter | Languages | Use it when |
+|---------|-----------|-------------|
+| [`starter/`](starter) | English only | one-language site |
+| [`starter-multilang/`](starter-multilang) | all 9 (en, ru, es, fr, de, pt, ko, ja, zh) | multilingual site, or you want to keep only some languages |
+
+Both include a home page, blog with tags, About, RSS, sitemap, 404, navigation, a sample post and a GitHub Pages
+deploy workflow.
+
+### 1. Requirements
+
+[Ruby](https://www.ruby-lang.org/) 3.0+ with Bundler. Node.js is optional (only for `npx degit` below).
+
+### 2. Copy a starter
+
+```sh
+npx degit danilevsky/jekyll-theme-perigee/starter my-site            # or .../starter-multilang
+cd my-site
+```
+
+Without Node: clone or download this repo and copy the `starter/` (or `starter-multilang/`) folder to wherever
+you want the site. Don't copy anything else from the repo.
+
+### 3. Run it
+
+```sh
+bundle install
+bundle exec jekyll serve      # http://localhost:4000
+```
+
+The starter's `Gemfile` fetches the theme from GitHub, so the first `bundle install` needs internet access.
+On Windows don't use `--detach`.
+
+### 4. Make it yours
+
+| What | Where |
+|------|-------|
+| Site title, description, logo text, footer name, social links, palette | `_config.yml` (`title`, `perigee:`) |
+| Home page sections (hero, latest posts, features, call to action) | `index.md` (`sections:` in front matter); in the multilingual starter also `<lang>/index.md` |
+| Header and footer menus | `_data/navigation.yml` |
+| About page | `about.md` (`<lang>/about.md`) |
+| Blog posts | `_posts/YYYY-MM-DD-title.md` (`<lang>/_posts/` for other languages) |
+| Colors and styles | add `_sass/perigee-custom.scss` to your site (the theme's own is empty) — see [Customization](#customization) |
+
+Delete the sample "Hello, world" post when you're done with it.
+
+**Multilingual starter:** English is at `/`, other languages at `/<lang>/`. Translations of the same page or post
+share a `translation_key`; the language switcher and `hreflang` use it. To drop a language, remove it from
+`languages` in `_config.yml`, delete its folder, and remove its `defaults` pair and its entries in
+`_data/navigation.yml`. The comment at the top of `_config.yml` repeats this.
+
+### 5. Publish
+
+- **GitHub Pages:** put the site in its own repo, set `url` (and `baseurl` for a project site, e.g. `/my-repo`)
+  in `_config.yml`, then Settings → Pages → Source: **GitHub Actions**. The included
+  `.github/workflows/pages.yml` builds and deploys on every push to `main`.
+- **Your own server:** run `JEKYLL_ENV=production bundle exec jekyll build` and upload `_site/`. Set `url` first
+  so the feed, sitemap and canonical links are correct.
+
+### Updating the theme
+
+The starter's `Gemfile` tracks the theme's `main` branch. Run `bundle update jekyll-theme-perigee` to pull
+changes, or pin a release with `tag: "v0.1.0"` once one exists.
+
+The sections below explain each piece in detail, and how to install the theme into an existing site without a starter.
+
 ## Installation
 
 Perigee requires Jekyll 4.3+. It isn't published to RubyGems — install it straight from this repo, one of two ways.

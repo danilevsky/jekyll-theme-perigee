@@ -1,0 +1,16 @@
+en:
+  - title: Blog
+    url: /blog/
+  - title: About
+    url: /about/
+# ru:
+#   - title: Блог
+#     url: /ru/blog/
+
+footer:
+  en:
+    - title: Site
+      links:
+        - { title: Home, url: / }
+        - { title: Blog, url: /blog/ }
+        - { title: About, url: /about/ }

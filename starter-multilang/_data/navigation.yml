@@ -1,0 +1,110 @@
+en:
+  - title: Blog
+    url: /blog/
+  - title: About
+    url: /about/
+ru:
+  - title: "Блог"
+    url: /ru/blog/
+  - title: "О сайте"
+    url: /ru/about/
+es:
+  - title: "Blog"
+    url: /es/blog/
+  - title: "Acerca de"
+    url: /es/about/
+fr:
+  - title: "Blog"
+    url: /fr/blog/
+  - title: "À propos"
+    url: /fr/about/
+de:
+  - title: "Blog"
+    url: /de/blog/
+  - title: "Über"
+    url: /de/about/
+pt:
+  - title: "Blog"
+    url: /pt/blog/
+  - title: "Sobre"
+    url: /pt/about/
+ko:
+  - title: "블로그"
+    url: /ko/blog/
+  - title: "소개"
+    url: /ko/about/
+ja:
+  - title: "ブログ"
+    url: /ja/blog/
+  - title: "概要"
+    url: /ja/about/
+zh:
+  - title: "博客"
+    url: /zh/blog/
+  - title: "关于"
+    url: /zh/about/
+
+footer:
+  en:
+    - title: Site
+      links:
+        - { title: Home, url: / }
+        - { title: Blog, url: /blog/ }
+        - { title: About, url: /about/ }
+        - { title: RSS feed, url: /feed.xml }
+  ru:
+    - title: "Сайт"
+      links:
+        - { title: "Главная", url: /ru/ }
+        - { title: "Блог", url: /ru/blog/ }
+        - { title: "О сайте", url: /ru/about/ }
+        - { title: "RSS-лента", url: /ru/feed.xml }
+  es:
+    - title: "Sitio"
+      links:
+        - { title: "Inicio", url: /es/ }
+        - { title: "Blog", url: /es/blog/ }
+        - { title: "Acerca de", url: /es/about/ }
+        - { title: "Canal RSS", url: /es/feed.xml }
+  fr:
+    - title: "Site"
+      links:
+        - { title: "Accueil", url: /fr/ }
+        - { title: "Blog", url: /fr/blog/ }
+        - { title: "À propos", url: /fr/about/ }
+        - { title: "Flux RSS", url: /fr/feed.xml }
+  de:
+    - title: "Seite"
+      links:
+        - { title: "Startseite", url: /de/ }
+        - { title: "Blog", url: /de/blog/ }
+        - { title: "Über", url: /de/about/ }
+        - { title: "RSS-Feed", url: /de/feed.xml }
+  pt:
+    - title: "Site"
+      links:
+        - { title: "Início", url: /pt/ }
+        - { title: "Blog", url: /pt/blog/ }
+        - { title: "Sobre", url: /pt/about/ }
+        - { title: "Feed RSS", url: /pt/feed.xml }
+  ko:
+    - title: "사이트"
+      links:
+        - { title: "홈", url: /ko/ }
+        - { title: "블로그", url: /ko/blog/ }
+        - { title: "소개", url: /ko/about/ }
+        - { title: "RSS 피드", url: /ko/feed.xml }
+  ja:
+    - title: "サイト"
+      links:
+        - { title: "ホーム", url: /ja/ }
+        - { title: "ブログ", url: /ja/blog/ }
+        - { title: "概要", url: /ja/about/ }
+        - { title: "RSS フィード", url: /ja/feed.xml }
+  zh:
+    - title: "站点"
+      links:
+        - { title: "首页", url: /zh/ }
+        - { title: "博客", url: /zh/blog/ }
+        - { title: "关于", url: /zh/about/ }
+        - { title: "RSS 订阅", url: /zh/feed.xml }
